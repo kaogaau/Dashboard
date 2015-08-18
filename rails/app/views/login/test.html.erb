@@ -1,0 +1,326 @@
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<%
+    @data = Hash.new
+    
+    	if @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)].size == @long.max
+    		@s3[params[:cid].to_i][getmongodocument(@company[0].to_i)].each do |key,value|
+    			if @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)].has_key?(key)
+    				@z = @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)][key]
+    			else
+    				@z = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)].has_key?(key)
+    				@w = @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)][key]
+    			else
+    				@w = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)].has_key?(key)
+    				@u = @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)][key]
+    			else
+    				@u = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)].has_key?(key)
+    				@g = @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)][key]
+    			else
+    				@g = 0
+    			end
+    			@data["#{key}"] = {y:value,z:@z,w:@w,u:@u,g:@g}
+    		end
+    	end
+    	if @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)].size == @long.max
+    		@s3[params[:cid].to_i][getmongodocument(@company[1].to_i)].each do |key,value|
+    			if @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)].has_key?(key)
+    				@y = @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)][key]
+    			else
+    				@y = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)].has_key?(key)
+    				@w = @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)][key]
+    			else
+    				@w = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)].has_key?(key)
+    				@u = @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)][key]
+    			else
+    				@u = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)].has_key?(key)
+    				@g = @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)][key]
+    			else
+    				@g = 0
+    			end
+    			@data["#{key}"] = {y:@y,z:value,w:@w,u:@u,g:@g}
+    		end
+    	end
+    	if @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)].size == @long.max
+    		@s3[params[:cid].to_i][getmongodocument(@company[2].to_i)].each do |key,value|
+    			if @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)].has_key?(key)
+    				@y = @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)][key]
+    			else
+    				@y = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)].has_key?(key)
+    				@z = @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)][key]
+    			else
+    				@z = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)].has_key?(key)
+    				@u = @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)][key]
+    			else
+    				@u = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)].has_key?(key)
+    				@g = @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)][key]
+    			else
+    				@g = 0
+    			end
+    			@data["#{key}"] = {y:@y,z:@z,w:value,u:@u,g:@g}
+    		end
+    	end
+    	if @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)].size == @long.max
+    		@s3[params[:cid].to_i][getmongodocument(@company[3].to_i)].each do |key,value|
+    			if @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)].has_key?(key)
+    				@y = @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)][key]
+    			else
+    				@y = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)].has_key?(key)
+    				@z = @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)][key]
+    			else
+    				@z = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)].has_key?(key)
+    				@w = @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)][key]
+    			else
+    				@w = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)].has_key?(key)
+    				@g = @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)][key]
+    			else
+    				@g = 0
+    			end
+    			@data["#{key}"] = {y:@y,z:@z,w:@w,u:value,g:@g}
+    		end
+    	end    	
+    	if @s3[params[:cid].to_i][getmongodocument(@company[4].to_i)].size == @long.max
+    		@s3[params[:cid].to_i][getmongodocument(@company[4].to_i)].each do |key,value|
+    			if @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)].has_key?(key)
+    				@y = @s3[params[:cid].to_i][getmongodocument(@company[0].to_i)][key]
+    			else
+    				@y = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)].has_key?(key)
+    				@z = @s3[params[:cid].to_i][getmongodocument(@company[1].to_i)][key]
+    			else
+    				@z = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)].has_key?(key)
+    				@w = @s3[params[:cid].to_i][getmongodocument(@company[2].to_i)][key]
+    			else
+    				@w = 0
+    			end
+    			if @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)].has_key?(key)
+    				@u = @s3[params[:cid].to_i][getmongodocument(@company[3].to_i)][key]
+    			else
+    				@u = 0
+    			end
+    			@data["#{key}"] = {y:@y,z:@z,w:@w,u:@u,g:value}
+    		end
+    	end    	
+    
+    # @array1["#{h.to_time.year}-#{h.to_time.month}-#{h.to_time.day}"] = k
+%>
+<script>
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Monthly Bad Comment',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Facebook',
+            x: -20
+        },
+        xAxis: {
+            categories: [ <%@data.each do |key,value|%>
+        <% key_date = key + "-1"%>
+        <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key_date.to_date > session[:start_date].to_date && key_date.to_date < session[:end_date].to_date%>
+    '<%=key%>',
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key_date.to_date > session[:start_date].to_date %>
+   '<%=key%>', 
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key_date.to_date < session[:end_date].to_date %>
+     '<%=key%>',
+      <%end%>
+      <%else%>
+      
+    '<%=key%>',
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+        <%end%> ]
+        },
+        yAxis: {
+            title: {
+                text: 'BadComment'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '<%=getmongodocument(@company[0].to_i)%>',
+            data: [<%@data.each do |key,value|%>
+        <% key_date = key + "-1"%>
+        <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key_date.to_date > session[:start_date].to_date && key_date.to_date < session[:end_date].to_date%>
+    <%=value[:y]%>,
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key_date.to_date > session[:start_date].to_date %>
+   <%=value[:y]%>,
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key_date.to_date < session[:end_date].to_date %>
+     <%=value[:y]%>,
+      <%end%>
+      <%else%>
+      
+    <%=value[:y]%>,
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+        <%end%>]
+        }, {
+            name: '<%=getmongodocument(@company[1].to_i)%>',
+            data: [<%@data.each do |key,value|%>
+        <% key_date = key + "-1"%>
+        <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key_date.to_date > session[:start_date].to_date && key_date.to_date < session[:end_date].to_date%>
+    <%=value[:z]%>,
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key_date.to_date > session[:start_date].to_date %>
+   <%=value[:z]%>,
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key_date.to_date < session[:end_date].to_date %>
+     <%=value[:z]%>,
+      <%end%>
+      <%else%>
+      
+    <%=value[:z]%>,
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+        <%end%>]
+        }, {
+            name: '<%=getmongodocument(@company[2].to_i)%>',
+            data: [<%@data.each do |key,value|%>
+        <% key_date = key + "-1"%>
+        <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key_date.to_date > session[:start_date].to_date && key_date.to_date < session[:end_date].to_date%>
+    <%=value[:w]%>,
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key_date.to_date > session[:start_date].to_date %>
+   <%=value[:w]%>,
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key_date.to_date < session[:end_date].to_date %>
+     <%=value[:w]%>,
+      <%end%>
+      <%else%>
+      
+    <%=value[:w]%>,
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+        <%end%>]
+        }, {
+            name: '<%=getmongodocument(@company[3].to_i)%>',
+            data: [<%@data.each do |key,value|%>
+        <% key_date = key + "-1"%>
+        <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key_date.to_date > session[:start_date].to_date && key_date.to_date < session[:end_date].to_date%>
+    <%=value[:u]%>,
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key_date.to_date > session[:start_date].to_date %>
+   <%=value[:u]%>,
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key_date.to_date < session[:end_date].to_date %>
+     <%=value[:u]%>,
+      <%end%>
+      <%else%>
+      
+    <%=value[:u]%>,
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+        <%end%>]
+        }, {
+            name: '<%=getmongodocument(@company[4].to_i)%>',
+            data: [<%@data.each do |key,value|%>
+        <% key_date = key + "-1"%>
+        <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key_date.to_date > session[:start_date].to_date && key_date.to_date < session[:end_date].to_date%>
+    <%=value[:g]%>,
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key_date.to_date > session[:start_date].to_date %>
+   <%=value[:g]%>,
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key_date.to_date < session[:end_date].to_date %>
+     <%=value[:g]%>,
+      <%end%>
+      <%else%>
+      
+    <%=value[:g]%>,
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+        <%end%>]
+        }]
+    });
+});
+</script>

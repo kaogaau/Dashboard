@@ -1,0 +1,614 @@
+
+
+    <!-- left side start-->
+    
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <%= render :partial => 'common/header'%>
+        <!-- header section end-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                <%= @a1[params[:id].to_i]["page_name"] %>
+            </h3>
+           <div class="state-info">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>按讚數</span>
+                            <h3 class="red-txt"><%= @a1[params[:id].to_i]["likes"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>留言數</span>
+                            <h3 class="green-txt"><%= @a1[params[:id].to_i]["comments"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>分享數</span>
+                            <h3 class="green-txt"><%= @a1[params[:id].to_i]["shares"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+        	 <div class="row">
+ 	<div class="col-sm-6">
+ 		
+                     <section class="panel">
+                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2">熱門字分析</th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td ><%= @s1[c.to_i]["top10"].keys[n] %></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor(@s1[c.to_i]["top10"].values[n].to_i)%>">
+                                	<%= @s1[c.to_i]["top10"].values[n] %></td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                        
+                        </section>
+                        <h3>資料來源：粉絲團 最後更新時間：2015/01/08</h3>
+                        </div>
+                        <div class="col-sm-6">
+ 		
+                     <section class="panel">
+                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>FB</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2">品牌口碑</th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..4).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td ><%= @s4[c.to_i]["top5"].keys[n] %></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor5(@s4[c.to_i]["top5"].values[n].to_i)%>">
+                                	<%= @s4[c.to_i]["top5"].values[n] %></td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                        
+                        </section>
+                        <h3>資料來源：粉絲團 最後更新時間：2015/01/05</h3>
+                        </div>
+                       
+</div>
+<div class="row">
+ 	<div class="col-md-6">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#month1" data-toggle="tab">關鍵字月成長</a>
+                                </li>
+                                <li class="">
+                                    <a href="#year1" data-toggle="tab">年成長</a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane  active" id="month1">
+                                    <div class="panel-body">
+                            <div class="row">
+                                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td><%= @s7[c.to_i]["montop"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor2(@s7[c.to_i]["montop"].values[n].to_i)%>">
+                                	<%= @s7[c.to_i]["montop"].values[n]%>%</td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="year1">
+                                	<div class="panel-body">
+                            <div class="row">
+                                  <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td ><%= @s7[c.to_i]["yeartop"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor2(@s7[c.to_i]["yeartop"].values[n].to_i)%>">
+                                	<%= @s7[c.to_i]["yeartop"].values[n]%>%</td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                                      
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   
+                    <!--more statistics box end-->
+                </div>
+ 	
+
+	<div class="col-md-6">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#month2" data-toggle="tab">新關鍵字（本月）</a>
+                                </li>
+                                <li class="">
+                                    <a href="#year2" data-toggle="tab">新關鍵字（本年）</a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane  active" id="month2">
+                                    <div class="panel-body">
+                            <div class="row">
+                                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td><%= @s7[c.to_i]["monnew"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor3(@s7[c.to_i]["monnew"].values[n].to_i)%>">
+                                	<%= @s7[c.to_i]["monnew"].values[n]%></td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                                 
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="year2">
+                                	<div class="panel-body">
+                            <div class="row">
+                                 <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td><%= @s7[c.to_i]["yearnew"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor4(@s7[c.to_i]["yearnew"].values[n].to_i)%>">
+                                	<%= @s7[c.to_i]["yearnew"].values[n]%></td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                                      
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   <h3>資料來源：粉絲團 最後更新時間：2015/01/08</h3>
+                    <!--more statistics box end-->
+                </div>
+	
+
+</div>
+          
+ 
+            <div class="row">
+                <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>"  data-toggle="tab">品牌趨勢</a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>"  data-toggle="tab">品牌趨勢</a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                         
+                        <div class="panel-body">
+                            <div class="tab-content">
+                               <div class="tab-pane active" id="home">
+                                    
+                                      <iframe  width="100%" height="700px" src="/outer/s3p?cid=<%=@company[0]%>&cate=comment&tid=<%=params[:tid]%>" style="border: none"></iframe>
+
+                                </div>
+                          </div>
+                        </div>
+                    </section>
+                      <h3>資料來源：粉絲團 最後更新時間：2015/01/05</h3>
+                </div>
+            </div>
+            
+            <div class="row">
+            <div class="col-md-12">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a onclick="changeif(1)" href="#profile2" data-toggle="tab">留言</a>
+                                </li>
+                                <li class="">
+                                    <a href="" onclick="changeif(2)" data-toggle="tab">分享</a>
+                                </li>
+                            </ul>
+                            <script>
+                            function changeif(a){
+                            	if(a ==1){
+                            	$("#theif").attr("src","/outer/s11p?cid=<%=params[:id]%>&cate=comment&tid=<%=params[:tid]%>");
+                            	}else{
+                            		$("#theif").attr("src","/outer/s11p?cid=<%=params[:id]%>&cate=share&tid=<%=params[:tid]%>");
+                            	}
+                            }
+                            </script>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane  active" id="profile2">
+                                    <div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe id="theif" width="100%" height="700px" src="/outer/s11p?cid=<%=params[:id]%>&cate=comment&tid=<%=params[:tid]%>&nos=1" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="contact2">
+                                	<div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe width="100%" height="700px" src="/outer/s11p?cid=<%=params[:id]%>&cate=share&tid=<%=params[:tid]%>&nos=1" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：粉絲團 最後更新時間：2014/12/03</h3>
+                    <!--more statistics box end-->
+                </div>
+                </div>
+                <div class="row">
+                	 <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            使用者成長量趨勢
+                        <span class="tools pull-right">
+                           
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                        	   <div class="row">
+                  <iframe width="100%" height="700px" src="/outer/s14p?cid=<%=params[:id]%>&tid=<%=params[:tid]%>&nos=1" style="border: none"></iframe>
+                               </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：粉絲團 最後更新時間：2015/01/06</h3>
+                </div>
+                	</div>
+                	<div class="row">
+                		 <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            活躍使用者分析
+                        <span class="tools pull-right">
+                           
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                        	   <div class="row">
+                  <iframe width="100%" height="700px" src="/outer/s15p?cid=<%=params[:id]%>&tid=<%=params[:tid]%>&nos=1" style="border: none"></iframe>
+                               </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：粉絲團 最後更新時間：2015/01/06</h3>
+                </div>
+                		</div>
+                		<div class="row">
+                			<div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>" data-toggle="tab"><%=@c5[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>" data-toggle="tab"> <%=@c5[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <div class="tab-pane active" id="home<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                  
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                      
+						 <% @alls = 0 %>
+						<% @c5[g.to_i]["comment"].each do |key,value| %>
+							<% @alls += value.to_i %>
+							
+						<% end %>
+
+                       <% @c5[g.to_i]["comment"].each do |key,value| %>
+
+                                    
+                                     <%@pers = value.to_i * 100 / @alls.to_i%>
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a href="#">
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:<%=@pers%>%">
+                                                <span class=""><%=@pers%>%</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                           
+                                 <%end%>
+                                 <%if params[:tid]=="1"%>
+                                  <tr>
+                                    <td>
+                                        <a href="#">
+                                           總量
+                                        </a>
+                                    </td>
+                                    
+                                    <td class="hidden-phone"><%=@alls%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <%end%>
+                                </tbody>
+                            </table>
+                                </div>
+                                <%else%>
+                                  <div class="tab-pane " id="home<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                   
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                    
+						 <% @alls = 0 %>
+						<% @c5[g.to_i]["comment"].each do |key,value| %>
+							<% @alls += value.to_i %>
+							
+						<% end %>
+
+                       <% @c5[g.to_i]["comment"].each do |key,value| %>
+
+                                     <%@pers = value.to_i * 100 / @alls.to_i%>
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a href="#" >
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:<%=@pers%>%">
+                                                <span class=""><%=@pers%>%</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                           
+                                 <%end%>
+                                  <%if params[:tid]=="1"%>
+                                  <tr>
+                                    <td>
+                                        <a href="#">
+                                           總量
+                                        </a>
+                                    </td>
+                                    
+                                    
+                                    <td class="hidden-phone"><%=@alls%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <%end%>
+                                </tbody>
+                            </table>
+                                </div>
+                                <%end%>
+                                <%end%>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：粉絲團 最後更新時間：2014/12/28</h3>
+                </div>
+                			</div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->

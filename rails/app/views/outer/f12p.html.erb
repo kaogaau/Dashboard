@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Flot Charts</title>
+
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<script>
+function gd(month){
+        	return new Date(2014,month -1,1).getTime();
+        }
+</script>
+<body style="background: #fff">
+
+<section>
+    <!-- left side start-->
+   
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div  >
+
+        <!-- header section start-->
+       
+        <!-- header section end-->
+
+        <!-- page heading start-->
+       
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <section >
+                     
+                        <div class="panel-body">
+                            <div id="toggle-chart">
+                                <div class="clearfix">
+                                    <form class="form-horizontal pull-left chart-control" style="display: none">
+                                        <div class="control-group">
+                                            <label class="control-label">Chart Type :</label>
+                                            <div class="series-list">
+                                                <label class="checkbox inline">
+                                                    <input id="chartType1" checked name="ct" type="radio" value="line"/>
+                                                    Line Chart</label>
+                                                <label class="checkbox inline">
+                                                    <input id="chartType2" name="ct" type="radio" value="bar"/>
+                                                    Bar Chart </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form class="form-horizontal chart-control pull-right chart-control" style="float: left!important">
+                                        <div class="control-group " style="pointer-events:none">
+                                            <label class="control-label">公司:</label>
+                                            <div class="series-list">
+                                            	<%if params[:fid].length == 1%>
+                                                <label class="checkbox inline" >
+                                                    <input type="checkbox" id="cbdata1" checked style="display: none">
+                                                    <img src="/color1.png">
+                                                    <%=@f12[@company[0].to_i]["page_name"]%></label>
+                                               
+                                                    <%end%>
+                                            	<%if params[:fid].length == 2%>
+                                                <label class="checkbox inline" >
+                                                    <input type="checkbox" id="cbdata1" checked style="display: none">
+                                                    <img src="/color1.png">
+                                                    <%=@f12[@company[0].to_i]["page_name"]%></label>
+                                                <label class="checkbox inline" >
+                                                    <input type="checkbox" id="cbdata2" checked style="display: none">
+                                                    <img src="/color2.png">
+                                                   <%=@f12[@company[1].to_i]["page_name"]%></label>
+                                               
+                                                    <%end%>
+                                            
+                                                    <%if params[:tid]== "1"%>
+                                                    <label class="checkbox inline">
+                                                    <input type="checkbox" id="cbdata<%=params[:cid].length+1%>"  style="display: none" checked>
+                                                    <img src="/color<%=params[:cid].length+1%>.png">
+                                                    其他</label> 
+                                                    <%end%>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="legendPlaceholder20">
+                                </div>
+                                <div id="toggle-chartContainer" style="width: 100%;height:300px; text-align: left;">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+      
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="/js/flot-chart/jquery.flot.js"></script>
+<script src="/js/flot-chart/jquery.flot.tooltip.js"></script>
+<script src="/js/flot-chart/jquery.flot.resize.js"></script>
+<script src="/js/flot-chart/jquery.flot.pie.resize.js"></script>
+<script src="/js/flot-chart/jquery.flot.selection.js"></script>
+<script src="/js/flot-chart/jquery.flot.stack.js"></script>
+<script src="/js/flot-chart/jquery.flot.time.js"></script>
+	<%if params[:fid].length == 1%>
+<script>
+
+<% alength = @f12[@company[0].to_i][params[:cate]]["month"].length %>
+var data1 = [
+<% n = 1 %>
+	<% @f12[@company[0].to_i][params[:cate]]["month"].each do |key,value| %>
+		[gd(<%=key.to_i%>),<%= value %>]<% if n != alength %>,<% end %>
+		<% n += 1 %> 	
+	<% end %>
+]
+</script>
+<%end%>
+		<%if params[:fid].length == 2%>
+<script>
+
+<% alength = @f12[@company[0].to_i][params[:cate]]["month"].length %>
+var data1 = [
+<% n = 1 %>
+	<% @f12[@company[0].to_i][params[:cate]]["month"].each do |key,value| %>
+		[gd(<%=key.to_i%>),<%= value %>]<% if n != alength %>,<% end %>
+		<% n += 1 %> 	
+	<% end %>
+]
+<% blength = @f12[@company[1].to_i][params[:cate]]["month"].length %>
+var data2 = [
+<% m = 1 %>
+	<% @f12[@company[1].to_i][params[:cate]]["month"].each do |key,value| %>
+		[gd(<%=key.to_i%>),<%= value %>]<% if m != blength %>,<% end %>
+		<% m += 1 %> 	
+	<% end %>
+     ]
+</script>
+<%end%>
+
+<script >
+
+  
+	 $(function() {
+        <%if params[:fid].length == 1%>
+      
+        <%if params[:tid] == "1"%>
+        var dataset = [data1,data<%=params[:cid].length+1%>];
+        <%else%>
+          var dataset = [data1];
+        <%end%>
+        <%end%>
+         <%if params[:fid].length == 2%>
+       
+        <%if params[:tid] == "1"%>
+        var dataset = [data1, data2, data<%=params[:cid].length+1%>];
+        <%else%>
+         var dataset = [data1, data2];
+        <%end%>
+        <%end%>
+         
+       
+        var options = {
+            series: {
+                stack: true,
+                 bars: {
+        show: true
+    },
+                shadowSize: 0
+            },
+            bars: {
+    align: "center",
+    barWidth:24 * 60 * 60 * 1000 * 9
+},
+            xaxis: {
+    mode: "time",
+    tickSize: [1, "month"],
+    tickLength: 10,
+    color: "black",
+    axisLabel: "Date",
+    axisLabelUseCanvas: true,
+    axisLabelFontSizePixels: 12,
+    axisLabelFontFamily: 'Verdana, Arial',
+    axisLabelPadding: 10
+    },yaxis: {
+    color: "black",
+    axisLabel: "DNS Query Count",
+    axisLabelUseCanvas: true,
+    axisLabelFontSizePixels: 12,
+    axisLabelFontFamily: 'Verdana, Arial',
+    axisLabelPadding: 3,
+   
+},grid: {
+                hoverable: true,
+                clickable: true,
+                tickColor: "#f9f9f9",
+                borderWidth: 1,
+                borderColor: "#eeeeee"
+            },
+            legend: {
+                position: 'nw',
+                labelBoxBorderColor: "#000000",
+    container: $("#bar-chart #legendPlaceholder20"),
+                noColumns: 0
+            }
+       };
+        var plot;
+       
+        function ToggleSeries() {
+            var d = [];
+            $("#toggle-chart input[type='checkbox']").each(function() {
+        if ($(this).is(":checked")) {
+        var seqence = $(this).attr("id").replace("cbdata", "");
+        d.push({
+        label: "data" + seqence,
+        data: dataset[seqence - 1]
+        });
+    }
+    });
+    options.series.lines = {};
+    
+    $("#toggle-chart input[type='radio']").each(function() {
+        if ($(this).is(":checked")) {
+        if ($(this).val() == "line") {
+        options.series.lines = {
+        fill: true
+        };
+    } else {
+        options.series.bars = {
+            show: true
+        };
+    }
+    }
+    });
+    $.plot($("#toggle-chart #toggle-chartContainer"), d, options);
+        }
+        $("#toggle-chart input").change(function() {
+            ToggleSeries();
+        });
+        ToggleSeries();
+         // $.plot("#placeholder", data1, { xaxis: { mode: "categories" } });
+        // xaxis: {
+		// mode: "categories",
+		// categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+	// }
+    });
+
+</script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

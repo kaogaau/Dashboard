@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Flot Charts</title>
+
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body style="background: #fff">
+
+<section>
+    <!-- left side start-->
+   
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div  >
+
+        <!-- header section start-->
+       
+        <!-- header section end-->
+
+        <!-- page heading start-->
+       
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <section >
+                     
+                        <div class="panel-body">
+                           <div class="chartJS">
+                                <canvas id="bar-chart-js" height="250" width="800" ></canvas>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+      
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="/js/chart-js/Chart.js"></script>
+
+ <script >
+	/**
+ * Created by westilian on 1/19/14.
+ */
+
+(function(){
+    var t;
+    function size(animate){
+        if (animate == undefined){
+            animate = false;
+        }
+        clearTimeout(t);
+        t = setTimeout(function(){
+            $("canvas").each(function(i,el){
+                $(el).attr({
+                    "width":$(el).parent().width(),
+                    "height":$(el).parent().outerHeight()
+                });
+            });
+            redraw(animate);
+            var m = 0;
+            $(".chartJS").height("");
+            $(".chartJS").each(function(i,el){ m = Math.max(m,$(el).height()); });
+            $(".chartJS").height(m);
+        }, 30);
+    }
+    $(window).on('resize', function(){ size(false); });
+
+
+    function redraw(animation){
+        var options = {};
+        if (!animation){
+            options.animation = false;
+        } else {
+            options.animation = true;
+        }
+
+
+        var barChartData = {
+            labels : ["<%=@s6[params[:cid].to_i]["monnew"].keys[0]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[1]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[2]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[3]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[4]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[5]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[6]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[7]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[8]%>",
+            "<%=@s6[params[:cid].to_i]["monnew"].keys[9]%>"],
+            datasets : [
+                {
+                    fillColor : <%if params[:cid].to_i == 0%> "#00DC03"<%end%><%if params[:cid].to_i == 1%> "#2a323f"<%end%><%if params[:cid].to_i == 2%> "#DC0300"<%end%><%if params[:cid].to_i == 3%> "#DC7100"<%end%><%if params[:cid].to_i == 4%> "#7F23D7"<%end%>,
+                    strokeColor : "#2a323f",
+                    data : [<%=@s6[params[:cid].to_i]["monnew"].values[0]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[1]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[2]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[3]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[4]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[5]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[6]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[7]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[8]%>,
+                    <%=@s6[params[:cid].to_i]["monnew"].values[9]%>]
+                },
+                
+            ]
+
+        }
+
+        var myLine = new Chart(document.getElementById("bar-chart-js").getContext("2d")).Bar(barChartData);
+
+
+    }
+
+
+
+
+    size(true);
+
+}());
+
+</script> 
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

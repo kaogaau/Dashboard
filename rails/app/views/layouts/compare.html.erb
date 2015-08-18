@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>AdminX</title>
+
+  <!--icheck-->
+  <link href="/js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+  <link href="/js/iCheck/skins/square/square.css" rel="stylesheet">
+  <link href="/js/iCheck/skins/square/red.css" rel="stylesheet">
+  <link href="/js/iCheck/skins/square/blue.css" rel="stylesheet">
+
+  <!--dashboard calendar-->
+  <link href="/css/clndr.css" rel="stylesheet">
+
+  <!--Morris Chart CSS -->
+  <link rel="stylesheet" href="/js/morris-chart/morris.css">
+
+  <!--common-->
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+   <link href="/trip/trip.css" rel="stylesheet">
+  <link href="/trip/trip.min.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv.js"></script>
+  <script src="/js/respond.min.js"></script>
+  <![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="sticky-header">
+<section>
+	<div class="left-side sticky-left-side">
+
+        <!--logo and iconic logo start-->
+        <div class="logo">
+             <a href="/dashboard/index"><img src="/images/logoo.png" style="height: 45px"></a>
+        </div>
+
+        <div class="logo-icon text-center">
+            <a href="index.html"><img src="/images/invoice-logo.jpg" alt=""></a>
+        </div>
+        <!--logo and iconic logo end-->
+
+        <div class="left-side-inner">
+
+            <!-- visible to small devices only -->
+            <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                <div class="media logged-user">
+                    <img alt="" src="images/photos/user-avatar.png" class="media-object">
+                    <div class="media-body">
+                        <h4><a href="#"><%=@user["name"]%></a></h4>
+                        <span>"Hello There..."</span>
+                    </div>
+                </div>
+
+                <h5 class="left-nav-title">Account Information</h5>
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                  <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                  <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+                  <li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+                </ul>
+            </div>
+
+           
+            <%= render :partial => 'common/leftsidebar'%>
+           
+
+        </div>
+    </div>
+     <div class="main-content" >
+    
+        <%= render :partial => 'common/header'%>
+       
+          <div class="wrapper">
+<%=yield%>
+
+ <script src="/trip/trip.js"></script>
+<script src="/trip/trip.min.js"></script>
+<script>
+<%if action_name == "s1p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : ' 熱門字分析',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   
+   {
+       position : 'screen-center',
+       content : '本圖為關鍵字在粉絲團留言的出現次數最多的前10名,依不同的數量大小顏色會由冷感到暖敢層遞',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s7p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : ' 火紅字分析',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   
+   {
+       position : 'screen-center',
+       content : '本圖為關鍵字的成長量前10名和新出現的關鍵字前10名,依不同的數量大小顏色會由冷感到暖敢層遞',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s4p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '品牌口碑',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   
+   {
+       position : 'screen-center',
+       content : '本圖為負評的前5名,依不同的數量大小顏色會由冷感到暖敢層遞',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s3p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '品牌趨勢',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源以及選取時間區間！！',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   {
+       position : 'screen-center',
+       content : '本圖為以下五種關鍵字出現的次數依照年份月份排列而成的趨勢圖',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s8p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '互動度分析',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   
+   {
+       position : 'screen-center',
+       content : '本圖為各種數據總量的圓餅圖比較,互動量為其他選項的相加值可以靠頁籤來更換你要看的項目',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s10p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '互動度成長趨勢',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源以及選取時間區間！！',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   {
+       position : 'screen-center',
+       content : '本圖為分析源的各種數據依照年份月份排列而成的趨勢圖',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s11p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '最佳互動量分析',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   {
+       position : 'screen-center',
+       content : '本圖為數據歷年月份的疊加量以疊加圖方式呈現',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s13p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '使用者結構分析',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   {
+       position : 'screen-center',
+       content : '本圖呈現使用者的男女比例以及總量',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s14p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '使用者成長趨勢',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源以及選取時間區間！！',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   {
+       position : 'screen-center',
+       content : '本圖為分析源的使用者成長量依照年份月份排列而成的趨勢圖',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s15p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '活躍使用者趨勢',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源以及選取時間區間！！',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   {
+       position : 'screen-center',
+       content : '本圖為分析源的活躍使用者數量依照年份月份排列而成的趨勢圖(活躍使用者為該月份有留言的人)',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+<%if action_name == "s16p"%>
+var trip = new Trip([
+	{
+       position : 'screen-center',
+       content : '意見領袖分析',
+        delay : 2000
+        
+   },
+   { 
+       sel : $('#choosecombutton'),
+       content : '你可以點選這個快捷鍵來更換分析源',
+       position : "s",
+       delay : -1,
+      showNavigation: true
+   },
+   {
+       position : 'screen-center',
+       content : '本圖呈現分析源留言最多的前五名',
+        delay : -1,
+      showNavigation: true
+        
+   },
+]);
+<%end%>
+function startlearn(){
+	trip.start();
+}
+
+</script>
+ <script>
+    $("input.single-checkbox:checkbox").click(function(){
+    if ($("input.single-checkbox:checkbox:checked").length > 5){
+      return false;
+   }
+});
+                            </script>
+</div>
+</div>
+</section>
+</body>
+</html>

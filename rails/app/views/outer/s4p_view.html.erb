@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Chartjs</title>
+
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body style="background: #fff">
+<section class="panel">
+                          <header class="panel-heading tab-bg-dark-navy-blue ">
+                              <ul class="nav nav-tabs">
+                                  <li class="active">
+                                      <a data-toggle="tab" href="#home" aria-expanded="true"><%=params[:top1]%></a>
+                                  </li>
+                                  <li class="">
+                                      <a data-toggle="tab" href="#about" aria-expanded="false"><%=params[:top2]%></a>
+                                  </li>
+                                  <li class="">
+                                      <a data-toggle="tab" href="#profile" aria-expanded="false"><%=params[:top3]%></a>
+                                  </li>
+                                  <li class="">
+                                      <a data-toggle="tab" href="#contact" aria-expanded="false"><%=params[:top4]%></a>
+                                  </li>
+                                  <li class="">
+                                      <a data-toggle="tab" href="#to_see" aria-expanded="false"><%=params[:top5]%></a>
+                                  </li>
+                              </ul>
+                          </header>
+                          <div class="panel-body">
+                              <div class="tab-content">
+                                  <div id="home" class="tab-pane active">
+                                     <table class="table table-bordered table-striped table-condensed">
+                                  <thead>
+                                  <tr>
+                                      <th>時間</th>
+                                      <th>留言</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  	<%@s4[params[:cid].to_i]["top1"][params[:top1]].each do |key,value|%>
+                                  <tr>
+                                      <td><%=key%></td>
+                                      <td><%=value%></td>
+                                 
+                                  </tr>
+                                 <%end%>
+                                  </tbody>
+                              </table>
+                                  </div>
+                                  <div id="about" class="tab-pane"><table class="table table-bordered table-striped table-condensed">
+                                  <thead>
+                                  <tr>
+                                      <th>時間</th>
+                                      <th>留言</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  	<%@s4[params[:cid].to_i]["top2"][params[:top2]].each do |key,value|%>
+                                  <tr>
+                                      <td><%=key%></td>
+                                      <td><%=value%></td>
+                                 
+                                  </tr>
+                                 <%end%>
+                                  </tbody>
+                              </table></div>
+                                  <div id="profile" class="tab-pane"><table class="table table-bordered table-striped table-condensed">
+                                  <thead>
+                                  <tr>
+                                      <th>時間</th>
+                                      <th>留言</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  	<%@s4[params[:cid].to_i]["top3"][params[:top3]].each do |key,value|%>
+                                  <tr>
+                                      <td><%=key%></td>
+                                      <td><%=value%></td>
+                                 
+                                  </tr>
+                                 <%end%>
+                                  </tbody>
+                              </table></div>
+                                  <div id="contact" class="tab-pane"><table class="table table-bordered table-striped table-condensed">
+                                  <thead>
+                                  <tr>
+                                      <th>時間</th>
+                                      <th>留言</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  	<%@s4[params[:cid].to_i]["top4"][params[:top4]].each do |key,value|%>
+                                  <tr>
+                                      <td><%=key%></td>
+                                      <td><%=value%></td>
+                                 
+                                  </tr>
+                                 <%end%>
+                                  </tbody>
+                              </table></div>
+                                   <div id="to_see" class="tab-pane"><table class="table table-bordered table-striped table-condensed">
+                                  <thead>
+                                  <tr>
+                                      <th>時間</th>
+                                      <th>留言</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  	<%@s4[params[:cid].to_i]["top5"][params[:top5]].each do |key,value|%>
+                                  <tr>
+                                      <td><%=key%></td>
+                                      <td><%=value%></td>
+                                 
+                                  </tr>
+                                 <%end%>
+                                  </tbody>
+                              </table></div>
+                              </div>
+                          </div>
+                      </section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--Chart JS-->
+<!-- <script src="/js/chart-js/Chart.js"></script> -->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

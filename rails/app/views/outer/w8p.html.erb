@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Chartjs</title>
+
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body style="background: #fff">
+
+<section>
+    <!-- left side start-->
+    
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div >
+
+        <!-- header section start-->
+       
+        <!-- header section end-->
+
+        <!-- page heading start-->
+     
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+                        <div class="panel-body">
+                            <div class="chartJS">
+                            	  <div id="graph-donut" class="revenue-graph" style="width: 50%;float: left"></div>
+                                <!-- <canvas id="pie-chart-js" height="250" width="800" ></canvas> -->
+                                 <div class="col-md-5 col-sm-5 col-xs-5">
+                                    <ul class="bar-legend">
+                                    	<%if params[:wid].length == 1%>
+                                    	<%if params[:tid] == "1"%>
+                                          <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                     
+                                         <li><span class="gray"></span>其他：<%=@others.to_i %></li>
+                                         <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        
+                                        </script>
+                                        <%else%>
+                                      <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                     
+                                        </script>
+                                        <%end%>
+                                        <%end%>
+                                       <%if params[:wid].length == 2%>
+                                       <%if params[:tid] == "1"%>
+                                          <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                     
+                                         <li><span class="gray"></span>其他：<%=@others.to_i %></li>
+                                         <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                    
+                                        </script>
+                                        <%else%>
+                                     <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                       <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                      
+                                        </script>
+                                        <%end%>
+                                        <%end%>
+                                        <%if params[:wid].length == 3%>
+                                        <%if params[:tid] == "1"%>
+                                          <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="red"></span><%=@w8[@company[2].to_i]["page_name"]%>：<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i %></li>
+                                       
+                                         <li><span class="gray"></span>其他：<%=@others.to_i %></li>
+                                         <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                        var forthepie3 = <%=@w8[@company[2].to_i][params[:cate]]["total"] %>;
+                                     
+                                        </script>
+                                        <%else%>
+                                        <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="red"></span><%=@w8[@company[2].to_i]["page_name"]%>：<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i %></li>
+                                             <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                        var forthepie3 = <%=@w8[@company[2].to_i][params[:cate]]["total"] %>;
+                                        </script>
+                                        <%end%>
+                                        <%end%>
+                                        <%if params[:wid].length == 4%>
+                                        <%if params[:tid] == "1"%>
+                                          <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="red"></span><%=@w8[@company[2].to_i]["page_name"]%>：<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i %></li>
+                                         <li><span class="blue"></span><%=@w8[@company[3].to_i]["page_name"]%>：<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i %></li>
+                                         
+                                         <li><span class="gray"></span>其他：<%=@others %></li>
+                                         <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                        var forthepie3 = <%=@w8[@company[2].to_i][params[:cate]]["total"] %>;
+                                        var forthepie4 = <%=@w8[@company[3].to_i][params[:cate]]["total"] %>;
+                                        
+                                        </script>
+                                        <%else%>
+                                        <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="red"></span><%=@w8[@company[2].to_i]["page_name"]%>：<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i %></li>
+                                         <li><span class="blue"></span><%=@w8[@company[3].to_i]["page_name"]%>：<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i %></li>
+                                         <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                        var forthepie3 = <%=@w8[@company[2].to_i][params[:cate]]["total"] %>;
+                                        var forthepie4 = <%=@w8[@company[3].to_i][params[:cate]]["total"] %>;
+                                        <%end%>
+                                        </script>
+                                        <%end%>
+                                        <%if params[:wid].length == 5%>
+                                        <%if params[:tid] == "1"%>
+                                          <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="red"></span><%=@w8[@company[2].to_i]["page_name"]%>：<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i %></li>
+                                         <li><span class="blue"></span><%=@w8[@company[3].to_i]["page_name"]%>：<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i %></li>
+                                         <li><span class="yellow"></span><%=@w8[@company[4].to_i]["page_name"]%>：<%=@w8[@company[4].to_i][params[:cate]]["total"].to_i %></li>
+                                         <li><span class="gray"></span>其他：<%=@others %></li>
+                                         <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                        var forthepie3 = <%=@w8[@company[2].to_i][params[:cate]]["total"] %>;
+                                        var forthepie4 = <%=@w8[@company[3].to_i][params[:cate]]["total"] %>;
+                                        var forthepie5 = <%=@w8[@company[4].to_i][params[:cate]]["total"] %>;
+                                        </script>
+                                        <%else%>
+                                         <li><span class="green"></span><%=@w8[@company[0].to_i]["page_name"]%>：<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="purple"></span><%=@w8[@company[1].to_i]["page_name"]%>：<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i %></li>
+                                        <li><span class="red"></span><%=@w8[@company[2].to_i]["page_name"]%>：<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i %></li>
+                                         <li><span class="blue"></span><%=@w8[@company[3].to_i]["page_name"]%>：<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i %></li>
+                                         <li><span class="yellow"></span><%=@w8[@company[4].to_i]["page_name"]%>：<%=@w8[@company[4].to_i][params[:cate]]["total"].to_i %></li>
+                                         <script>
+                                        var forthepie1 = <%=@w8[@company[0].to_i][params[:cate]]["total"] %>;
+                                        var forthepie2 = <%=@w8[@company[1].to_i][params[:cate]]["total"] %>;
+                                        var forthepie3 = <%=@w8[@company[2].to_i][params[:cate]]["total"] %>;
+                                        var forthepie4 = <%=@w8[@company[3].to_i][params[:cate]]["total"] %>;
+                                        var forthepie5 = <%=@w8[@company[4].to_i][params[:cate]]["total"] %>;
+                                        </script>
+                                        <%end%>
+                                        <%end%>
+                                        <script>
+                                        var forthepieall = "no"
+                                        if(<%=params[:tid]%> == "1"){
+                                        	forthepieall = <%=@others%>;
+                                        }
+                                   
+                                        </script>
+                                    </ul>
+                                </div>
+                            </div>
+                                 
+                        </div>
+               
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--Chart JS-->
+<!-- <script src="/js/chart-js/Chart.js"></script> -->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+<script>
+<%if params[:wid].length == 1%>
+<%if params[:tid] == "1"%>
+Morris.Donut({
+		
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i * 100 / @theall %>%'}, 
+        {value: forthepieall, label: '其他', formatted: '<%=@others *100/@theall%>%'}
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#444444'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+	});
+	<%else%>
+	Morris.Donut({
+	
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '100%' }
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+});
+<%end%>
+
+<%end%>
+<%if params[:wid].length == 2%>
+<%if params[:tid] == "1"%>
+Morris.Donut({
+		
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@theall %>%'},
+         {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+        {value: forthepieall, label: '其他', formatted: '<%=@others*100/@theall%>%'}
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe','#444444'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+	});
+	<%else%>
+Morris.Donut({
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+       {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@minus %>%' }
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+});
+<%end%>
+<%end%>
+<%if params[:wid].length == 3%>
+<%if params[:tid] == "1"%>
+Morris.Donut({
+		
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@theall %>%'},
+         {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+         {value: forthepie3, label: '<%=@w8[@company[2].to_i]["page_name"]%>', formatted: '<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+        {value: forthepieall, label: '其他', formatted: '<%=@others*100/@theall%>%'}
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe','#fb8575','#444444'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+	});
+	<%else%>
+Morris.Donut({
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+       {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+         {value: forthepie3, label: '<%=@w8[@company[2].to_i]["page_name"]%>', formatted: '<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i*100/@minus %>%' }
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe','#fb8575'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+});
+<%end%>
+<%end%>
+<%if params[:wid].length == 4%>
+<%if params[:tid] == "1"%>
+Morris.Donut({
+		
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@theall %>%'},
+         {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+         {value: forthepie3, label: '<%=@w8[@company[2].to_i]["page_name"]%>', formatted: '<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+         {value: forthepie4, label: '<%=@w8[@company[3].to_i]["page_name"]%>', formatted: '<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+           
+        {value: forthepieall, label: '其他', formatted: '<%=@others*100/@theall%>%'}
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe','#fb8575','#5ab6df','#444444'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+	});
+	<%else%>
+Morris.Donut({
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+       {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+         {value: forthepie3, label: '<%=@w8[@company[2].to_i]["page_name"]%>', formatted: '<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+         {value: forthepie4, label: '<%=@w8[@company[3].to_i]["page_name"]%>', formatted: '<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i*100/@minus %>%' }
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe','#fb8575','#5ab6df'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+});
+<%end%>
+<%end%>
+<%if params[:wid].length == 5%>
+<%if params[:tid] == "1"%>
+Morris.Donut({
+		
+    element: 'graph-donut',
+    data: [
+        {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@theall %>%'},
+         {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+         {value: forthepie3, label: '<%=@w8[@company[2].to_i]["page_name"]%>', formatted: '<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+         {value: forthepie4, label: '<%=@w8[@company[3].to_i]["page_name"]%>', formatted: '<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i*100/@theall %>%' },
+           {value: forthepie5, label: '<%=@w8[@company[4].to_i]["page_name"]%>', formatted: '<%=@w8[@company[4].to_i][params[:cate]]["total"].to_i*100/@theall %>%' }, 
+        {value: forthepieall, label: '其他', formatted: '<%=@others*100/@theall%>%'}
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe','#fb8575','#5ab6df','#f7fa00','#444444'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+	});
+	<%else%>
+Morris.Donut({
+    element: 'graph-donut',
+    data: [
+         {value: forthepie1, label: '<%=@w8[@company[0].to_i]["page_name"]%>', formatted: '<%=@w8[@company[0].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+         {value: forthepie2, label: '<%=@w8[@company[1].to_i]["page_name"]%>', formatted: '<%=@w8[@company[1].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+         {value: forthepie3, label: '<%=@w8[@company[2].to_i]["page_name"]%>', formatted: '<%=@w8[@company[2].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+         {value: forthepie4, label: '<%=@w8[@company[3].to_i]["page_name"]%>', formatted: '<%=@w8[@company[3].to_i][params[:cate]]["total"].to_i*100/@minus %>%' },
+         {value: forthepie5, label: '<%=@w8[@company[4].to_i]["page_name"]%>', formatted: '<%=@w8[@company[4].to_i][params[:cate]]["total"].to_i*100/@minus %>%' }
+    ],
+    backgroundColor: false,
+    labelColor: '#000000',
+    colors: [
+        '#4bcacc','#6a8bbe','#fb8575','#5ab6df','#f7fa00'
+    ],
+    formatter: function (x, data) { return data.formatted; }
+});
+<%end%>
+<%end%>
+</script>
+
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

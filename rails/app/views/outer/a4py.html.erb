@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Flot Charts</title>
+  <link rel="stylesheet" href="/js/morris-chart/morris.css">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+ 
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body style="background: #fff">
+
+
+
+        <!-- header section start-->
+       
+        <!-- header section end-->
+
+        <!-- page heading start-->
+       
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        
+                
+                     
+                    
+                          <div id="graph-bar"></div>
+                     
+                    
+          
+           
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+      
+        <!--footer section end-->
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+<script>
+Morris.Bar({
+    element: 'graph-bar',
+    data: [
+    <%if @a4[@fid]["comment"]["year"]["2009"].present?%>    {x: '2009', y: <%= @a4[@fid]["comment"]["year"]["2009"] %>, z: <%= @a4[@fid]["share"]["year"]["2009"] %>},<%end%>
+    <%if @a4[@fid]["comment"]["year"]["2010"].present?%>    {x: '2010', y: <%= @a4[@fid]["comment"]["year"]["2010"] %>, z: <%= @a4[@fid]["share"]["year"]["2010"] %>},<%end%>
+    <%if @a4[@fid]["comment"]["year"]["2011"].present?%>    {x: '2011', y: <%= @a4[@fid]["comment"]["year"]["2011"] %>, z: <%= @a4[@fid]["share"]["year"]["2011"] %>},<%end%>
+     <%if @a4[@fid]["comment"]["year"]["2012"].present?%>   {x: '2012', y: <%= @a4[@fid]["comment"]["year"]["2012"] %>, z: <%= @a4[@fid]["share"]["year"]["2012"] %>},<%end%>
+        {x: '2013', y: <%= @a4[@fid]["comment"]["year"]["2013"] %>, z: <%= @a4[@fid]["share"]["year"]["2013"] %>},
+        {x: '2014', y: <%= @a4[@fid]["comment"]["year"]["2014"] %>, z: <%= @a4[@fid]["share"]["year"]["2014"] %>},
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z'],
+    labels: ['Comment', 'Share' ],
+    barColors:['rgba(176,196,222,1)','rgba(255,0,0,1)']
+
+
+});
+</script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

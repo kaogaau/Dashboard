@@ -1,0 +1,292 @@
+
+
+    <!-- left side start-->
+    
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <%= render :partial => 'common/header'%>
+        <!-- header section end-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                <%= @f8[params[:id].to_i]["page_name"] %>
+            </h3>
+           <div class="state-info">
+                
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>po文數</span>
+                            <h3 class="green-txt"><%= @f8[params[:id].to_i]["post"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>留言數</span>
+                            <h3 class="green-txt"><%= @f8[params[:id].to_i]["comment"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+      <div class="row">
+      	  <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company2.each do |g|%>
+                            	<%if g == @company2[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>" onclick="changeif2(<%=g%>)" data-toggle="tab">品牌趨勢</a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>" onclick="changeif2(<%=g%>)" data-toggle="tab">品牌趨勢</a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                         <script>
+                            function changeif2(a){
+                            	
+                            	$("#theif2").attr("src","/outer/f3p?fid=" + a +"&cate=comment&tid=<%=params[:tid]%>");
+                            	
+                            }
+                            </script>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                               <div class="tab-pane active" id="home">
+                                    
+                                      <iframe id="theif2" width="100%" height="700px" src="/outer/f3p?fid=<%=@company2[0]%>&cate=comment&tid=<%=params[:tid]%>" style="border: none"></iframe>
+
+                                </div>
+                          </div>
+                        </div>
+                    </section>
+                      <h3>資料來源：討論區 最後更新時間：2015/01/05</h3>
+                </div>
+                
+      	</div>
+      	<div class="row">
+      		<div class="col-md-12">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#no" onclick="changeif(1)" data-toggle="tab">貼文</a>
+                                </li>
+                                <li class="">
+                                    <a href="#no" onclick="changeif(2)" data-toggle="tab">回應</a>
+                                </li>
+                            </ul>
+                             <script>
+                            function changeif(a){
+                            	if(a == 1){
+                            		$("#theif").attr("src","/outer/f10p?fid=<%=@company2[0]%>&cate=post&tid=0");
+                            	}else{
+                            		$("#theif").attr("src","/outer/f10p?fid=<%=@company2[0]%>&cate=comment&tid=0");
+                            	}
+                            }
+                            </script>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane  active" id="fp2">
+                                    <div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe id="theif" width="100%" height="700px" src="/outer/f10p?fid=<%=params[:id]%>&cate=post&tid=0" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="fc2">
+                                	<div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe width="100%" height="700px" src="/outer/f10p?fid=<%=params[:id]%>&cate=comment&tid=0" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：討論區 最後更新時間：2015/01/06</h3>
+                    <!--more statistics box end-->
+                </div>
+      		
+      		</div>
+      		<div class="row">
+      			<div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            活躍使用者分析
+                        <span class="tools pull-right">
+                           
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                        	   <div class="row">
+                  <iframe width="100%" height="700px" src="/outer/f15p?fid=<%=params[:id]%>&tid=0" style="border: none"></iframe>
+                               </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：粉絲團 最後更新時間：2015/01/06</h3>
+                </div>
+          </div>
+          <div class="row">
+          	<div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company2.each do |g|%>
+                            	<%if g == @company2[0]%>
+                                <li class="active">
+                                    <a href="#home2<%=g%>" data-toggle="tab">意見領袖分析</a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home2<%=g%>" data-toggle="tab">意見領袖分析</a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                            	<%@company2.each do |g|%>
+                            	<%if g == @company2[0]%>
+                                <div class="tab-pane active" id="home2<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                  
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                      
+						 <% @alls = 0 %>
+						<% @f16[g.to_i]["top5"].each do |key,value| %>
+							
+							
+						<% end %>
+
+                       <% @f16[g.to_i]["top5"].each do |key,value| %>
+
+                                    
+                                   
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a href="#" >
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                           
+                                 <%end%>
+                                
+                                </tbody>
+                            </table>
+                                </div>
+                                <%else%>
+                                  <div class="tab-pane " id="home2<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                   
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                    
+						 <% @alls = 0 %>
+						<% @f16[g.to_i]["top5"].each do |key,value| %>
+							<% @alls += value.to_i %>
+							
+						<% end %>
+
+                       <% @f16[g.to_i]["top5"].each do |key,value| %>
+
+                                    
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a href="#">
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                           
+                                 <%end%>
+                                  
+                                </tbody>
+                            </table>
+                                </div>
+                                <%end%>
+                                <%end%>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </section>
+                     <h3>資料來源：討論區 最後更新時間：2014/12/28</h3>
+                </div>
+          	</div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->

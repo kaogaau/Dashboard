@@ -1,0 +1,261 @@
+<div class="col-md-12">
+                    <!--more statistics box start-->
+         
+                    <!--more statistics box end-->
+                </div>
+ <div class="row">
+ 	<div class="col-md-12">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#month1" data-toggle="tab">關鍵字月成長</a>
+                                </li>
+                                <li class="">
+                                    <a href="#year1" data-toggle="tab">年成長</a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane  active" id="month1">
+                                    <div class="panel-body">
+                            <div class="row">
+                                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td <%if @monthtop.include?(@s7[c.to_i]["montop"].keys[n])%><%else%>style='color: red'<%end%>><%= @s7[c.to_i]["montop"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor2(@s7[c.to_i]["montop"].values[n].to_i)%>">
+                                	<%= @s7[c.to_i]["montop"].values[n]%>%/<%=@s7[c.to_i]["monmother"].values[n]%>次</td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="year1">
+                                	<div class="panel-body">
+                            <div class="row">
+                                  <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td <%if @yeartop.include?(@s7[c.to_i]["yeartop"].keys[n])%><%else%>style='color: red'<%end%>><%= @s7[c.to_i]["yeartop"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor2(@s7[c.to_i]["yeartop"].values[n].to_i)%>">
+                                	<%= @s7[c.to_i]["yeartop"].values[n]%>%/<%=@s7[c.to_i]["yearmother"].values[n]%>次</td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                                      
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   
+                    <!--more statistics box end-->
+                </div>
+ 	
+</div>
+<div class="row">
+	<div class="col-md-12">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#month2" data-toggle="tab">新關鍵字（本月）</a>
+                                </li>
+                                <li class="">
+                                    <a href="#year2" data-toggle="tab">新關鍵字（本年）</a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane  active" id="month2">
+                                    <div class="panel-body">
+                            <div class="row">
+                                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td <%if @monthnew.include?(@s7[c.to_i]["monnew"].keys[n])%><%else%>style='color: red'<%end%>><%= @s7[c.to_i]["monnew"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor3(@s7[c.to_i]["monnew"].values[n].to_i)%>">
+                              	<%= @s7[c.to_i]["monnew"].values[n]%>次</td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                                 
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="year2">
+                                	<div class="panel-body">
+                            <div class="row">
+                                 <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>#</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s7[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..9).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td <%if @yearnew.include?(@s7[c.to_i]["yearnew"].keys[n])%><%else%>style='color: red'<%end%>>
+                                	<%= @s7[c.to_i]["yearnew"].keys[n]%></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor4(@s7[c.to_i]["yearnew"].values[n].to_i)%>">
+                                	<%= @s7[c.to_i]["yearnew"].values[n]%>次</td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                                      
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   <h3>資料來源：粉絲團 最後更新時間：<%= @lasttime[0]["time"] %></h3>
+                    <!--more statistics box end-->
+                </div>
+	  <br>
+            <button onclick="startlearn()" class="btn btn-danger btn-large" style="margin-left: 47%;margin-top: 2%">功能導覽</button>
+
+</div>
+	
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="/js/iCheck/jquery.icheck.js"></script>
+<script src="/js/icheck-init.js"></script>
+
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+<!-- <script>
+Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'Julie Yang', y: 3, z: 2, a: 3},
+        {x: '鱷魚必安住好你來A', y: 2, z: 0, a: 1},
+        {x: '絕對領域', y: 0, z: 2, a: 4},
+        {x: '何欣甯', y: 0, z: 2, a: 4},
+        {x: 'cat Yuen', y: 2, z: 4, a: 3}
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z', 'a'],
+    labels: ['公司1', '公司2', '公司3'],
+    barColors:['#414e62','#788ba0','#6dc5a3', '#dc0300']
+
+
+});
+
+</script> -->
+<!--Calendar-->
+<script src="/js/calendar/clndr.js"></script>
+<script src="/js/calendar/evnt.calendar.init.js"></script>
+<script src="/js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+<!--Dashboard Charts-->
+<script src="/js/forindex.js"></script>

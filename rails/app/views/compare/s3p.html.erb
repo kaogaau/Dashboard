@@ -1,0 +1,132 @@
+<div class="col-md-12">
+                    <!--more statistics box start-->
+       
+                   
+                    <!--more statistics box end-->
+                </div>
+ <div class="row">
+ 	<%if @company != ''%>
+               <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>" onclick="changeif(<%=g%>)" data-toggle="tab"><%=@s3[g.to_i]["sorce"]%></a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>" onclick="changeif(<%=g%>)" data-toggle="tab"> <%=@s3[g.to_i]["sorce"]%></a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                         <script>
+                            function changeif(a){
+                            	
+                            	$("#theif").attr("src","/outer/s3p?cid=" + a +"&cate=comment&tid=<%=params[:tid]%>");
+                            	
+                            }
+                            </script>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                               <div class="tab-pane active" id="home">
+                                    
+                                      <iframe id="theif" width="100%" height="700px" src="/outer/s3p?cid=<%=@company[0]%>&cate=comment&tid=<%=params[:tid]%>" style="border: none"></iframe>
+
+                                </div>
+                          </div>
+                        </div>
+                    </section>
+                      <h3>資料來源：粉絲團 最後更新時間：<%= @lasttime[0]["time"] %></h3>
+                </div>
+
+<%end%>
+<%if params[:fid] != ''%>
+               <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company2.each do |g|%>
+                            	<%if g == @company2[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>" onclick="changeif2(<%=g%>)" data-toggle="tab"><%=@f3[g.to_i]["sorce"]%></a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>" onclick="changeif2(<%=g%>)" data-toggle="tab"> <%=@f3[g.to_i]["sorce"]%></a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                         <script>
+                            function changeif2(a){
+                            	
+                            	$("#theif2").attr("src","/outer/f3p?fid=" + a +"&cate=comment&tid=<%=params[:tid]%>");
+                            	
+                            }
+                            </script>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                               <div class="tab-pane active" id="home">
+                                    
+                                      <iframe id="theif2" width="100%" height="700px" src="/outer/f3p?fid=<%=@company2[0]%>&cate=comment&tid=<%=params[:tid]%>" style="border: none"></iframe>
+
+                                </div>
+                          </div>
+                        </div>
+                    </section>
+                      <h3>資料來源：討論區 最後更新時間：2015/01/05</h3>
+                </div>
+
+<%end%>
+<br>
+            <button onclick="startlearn()" class="btn btn-danger btn-large" style="margin-left: 47%;margin-top: 2%">功能導覽</button>
+</div>
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="/js/iCheck/jquery.icheck.js"></script>
+<script src="/js/icheck-init.js"></script>
+
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+<!--Calendar-->
+<script src="/js/calendar/clndr.js"></script>
+<script src="/js/calendar/evnt.calendar.init.js"></script>
+<script src="/js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+<!--Dashboard Charts-->
+<script src="/js/forindex.js"></script>

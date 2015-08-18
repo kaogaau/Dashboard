@@ -1,0 +1,113 @@
+<div class="col-md-12">
+                    <!--more statistics box start-->
+        <div class="page-heading">
+            <h3>
+              引起互動關鍵字top10
+            </h3>
+           
+        </div>
+                   
+                    <!--more statistics box end-->
+                </div>
+ <div class="row">
+ 	
+                <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>" data-toggle="tab"> <%=@s6[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>" data-toggle="tab"> <%=@s6[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <div class="tab-pane active" id="home<%=g%>">
+                                    <iframe width="100%" height="700px" src="/outer/s6p?cid=<%=g%>&tid=<%=params[:tid]%>" style="border: none"></iframe>
+                                </div>
+                                <%else%>
+                                  <div class="tab-pane " id="home<%=g%>">
+                                    <iframe width="100%" height="700px" src="/outer/s6p?cid=<%=g%>&tid=<%=params[:tid]%>" style="border: none"></iframe>
+                                </div>
+                                <%end%>
+                                <%end%>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="/js/iCheck/jquery.icheck.js"></script>
+<script src="/js/icheck-init.js"></script>
+
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+<!-- <script>
+Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'Julie Yang', y: 3, z: 2, a: 3},
+        {x: '鱷魚必安住好你來A', y: 2, z: 0, a: 1},
+        {x: '絕對領域', y: 0, z: 2, a: 4},
+        {x: '何欣甯', y: 0, z: 2, a: 4},
+        {x: 'cat Yuen', y: 2, z: 4, a: 3}
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z', 'a'],
+    labels: ['公司1', '公司2', '公司3'],
+    barColors:['#414e62','#788ba0','#6dc5a3', '#dc0300']
+
+
+});
+
+</script> -->
+<!--Calendar-->
+<script src="/js/calendar/clndr.js"></script>
+<script src="/js/calendar/evnt.calendar.init.js"></script>
+<script src="/js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+<!--Dashboard Charts-->
+<script src="/js/forindex.js"></script>

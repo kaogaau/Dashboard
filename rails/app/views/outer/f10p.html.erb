@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Chartjs</title>
+
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body style="background: #fff">
+
+<section>
+    <!-- left side start-->
+    
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div >
+
+        <!-- header section start-->
+       
+        <!-- header section end-->
+
+        <!-- page heading start-->
+     
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+                        <div class="panel-body">
+                            <div class="chartJS">
+                            	  <div id="graph-area-line"></div>
+                                <!-- <canvas id="pie-chart-js" height="250" width="800" ></canvas> -->
+                               
+                            </div>
+                                 
+                        </div>
+               
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--Chart JS-->
+<!-- <script src="/js/chart-js/Chart.js"></script> -->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+<script>
+
+// Use Morris.Area instead of Morris.Line
+
+<%if @company.length == 1%>
+Morris.Area({
+    element: 'graph-area-line',
+    behaveLikeLine: false,
+    data: [
+   
+    <%@f10[@company[0].to_i][params[:cate]]["month"].each do |key,value|%>
+      <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key.to_date > session[:start_date].to_date && key.to_date < session[:end_date].to_date%>
+      {x: '<%=key%>', y: <%=value%>},
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key.to_date > session[:start_date].to_date %>
+      {x: '<%=key%>', y: <%=value%>},
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key.to_date < session[:end_date].to_date %>
+      {x: '<%=key%>', y: <%=value%>},
+      <%end%>
+      <%else%>
+      
+      {x: '<%=key%>', y: <%=value%>},
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+       
+   
+        
+        <%end%>
+    ],
+    xkey: 'x',
+    ykeys: 'y',
+    labels: '<%=@f10[@company[0].to_i]["page_name"]%>',
+    lineColors:'#414e62'
+
+
+
+});
+<%end%>
+<%if @company.length == 2%>
+<%
+    @data = Hash.new
+    
+    	if @f10[@company[0].to_i][params[:cate]]["month"].size == @long.max
+    		@f10[@company[0].to_i][params[:cate]]["month"].each do |key,value|
+    			if @f10[@company[1].to_i][params[:cate]]["month"].has_key?(key)
+    				@z = @f10[@company[1].to_i][params[:cate]]["month"][key]
+    			else
+    				@z = 0
+    			end
+    			@data["#{key}"] = {y:value,z:@z}
+    		end
+    	else
+    		@f10[@company[1].to_i][params[:cate]]["month"].each do |key,value|
+    			if @f10[@company[0].to_i][params[:cate]]["month"].has_key?(key)
+    				@y = @f10[@company[0].to_i][params[:cate]]["month"][key]
+    			else
+    				@y = 0
+    			end
+    			@data["#{key}"] = {y:@y,z:value}
+    		end
+    	end
+    	    	
+    
+    # @array1["#{h.to_time.year}-#{h.to_time.month}-#{h.to_time.day}"] = k
+%>
+
+Morris.Area({
+    element: 'graph-area-line',
+    behaveLikeLine: false,
+    data: [
+    <%@data.each do |key,value|%>
+        
+        <%if session[:start_date].present? && session[:end_date].present?%>
+      <%if key.to_date > session[:start_date].to_date && key.to_date < session[:end_date].to_date%>
+     {x: '<%=key%>', y: <%=value[:y]%>, z: <%=value[:z]%>},
+      <%end%>
+      <%else%>
+      <%if session[:start_date].present? %>
+      <%if key.to_date > session[:start_date].to_date %>
+     {x: '<%=key%>', y: <%=value[:y]%>, z: <%=value[:z]%>},
+      <%end%>
+      <%else%>
+      <%if session[:end_date].present? %>
+       <%if key.to_date < session[:end_date].to_date %>
+      {x: '<%=key%>', y: <%=value[:y]%>, z: <%=value[:z]%>},
+      <%end%>
+      <%else%>
+      
+      {x: '<%=key%>', y: <%=value[:y]%>, z: <%=value[:z]%>},
+      
+      <%end%>   
+      <%end%>
+        <%end%>
+        <%end%>
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z'],
+    labels: ['<%=@f10[0]["page_name"]%>', '<%=@f10[1]["page_name"]%>'],
+    lineColors:['#414e62','#6dc5a3']
+
+
+
+});
+<%end%>
+
+</script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

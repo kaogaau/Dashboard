@@ -1,0 +1,136 @@
+<div class="col-md-12">
+                    <!--more statistics box start-->
+          
+                    <!--more statistics box end-->
+                </div>
+                <%if params[:cid] != ''%>
+ <div class="row">
+ 	
+ 	<div class="col-sm-12">
+ 		
+                     <section class="panel">
+                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>FB</th>
+                                <%@company.each do |c|%>
+                                <th colspan="2"><%=@s4[c.to_i]["page_name"]%>
+                                	<%if @s4[c.to_i]["top5"].include?("nil")%>
+                                	<%else%>
+                                	<a target="_blank" href="/outer/s4p_view?cid=<%=c.to_i%>&top1=<%= @s4[c.to_i]["top5"].keys[0]%>&top2=<%= @s4[c.to_i]["top5"].keys[1]%>&top3=<%= @s4[c.to_i]["top5"].keys[2]%>&top4=<%= @s4[c.to_i]["top5"].keys[3]%>&top5=<%= @s4[c.to_i]["top5"].keys[4] %>">(詳細內容)</a>
+                                	<%end%>
+                                	</th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..4).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@company.each do |c|%>
+                                <td <%if @ppp.include?(@s4[c.to_i]["top5"].keys[n])%><%else%>style='color: red'<%end%>><%= @s4[c.to_i]["top5"].keys[n] %></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor5(@s4[c.to_i]["top5"].values[n].to_i)%>">
+                                	<%= @s4[c.to_i]["top5"].values[n] %></td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                        
+                        </section>
+                        <h3>資料來源：粉絲團 最後更新時間：<%= @lasttime[0]["time"] %></h3>
+                        </div>
+                           
+
+</div>
+   <%end%>
+   <%if params[:wid] != ''%>
+ <div class="row">
+ 	
+ 	<div class="col-sm-12">
+ 		
+                     <section class="panel">
+                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>Weibo</th>
+                                <%@companyw.each do |c|%>
+                                <th colspan="2"><%=@w4[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..4).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@companyw.each do |c|%>
+                                <td <%if @pppw.include?(@w4[c.to_i]["top5"].keys[n])%><%else%>style='color: red'<%end%>><%= @w4[c.to_i]["top5"].keys[n] %></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor5(@w4[c.to_i]["top5"].values[n].to_i)%>">
+                                	<%= @w4[c.to_i]["top5"].values[n] %></td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                        
+                        </section>
+                          <h3>資料來源：微博 最後更新時間：2015/01/05</h3>
+                        </div>
+                           
+
+</div>
+   <%end%>
+   <br>
+            <button onclick="startlearn()" class="btn btn-danger btn-large" style="margin-left: 47%;margin-top: 2%">功能導覽</button>
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="/js/iCheck/jquery.icheck.js"></script>
+<script src="/js/icheck-init.js"></script>
+
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+<!--Calendar-->
+<script src="/js/calendar/clndr.js"></script>
+<script src="/js/calendar/evnt.calendar.init.js"></script>
+<script src="/js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+<!--Dashboard Charts-->
+<script src="/js/forindex.js"></script>

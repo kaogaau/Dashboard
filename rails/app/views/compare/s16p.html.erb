@@ -1,0 +1,469 @@
+<div class="col-md-12">
+            
+                </div>
+ <div class="row">
+ 	<%if params[:cid] != "" || !session[:oid].blank?%>
+ 	<%if @date.present?%>
+ 	 <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>" data-toggle="tab"><%=@c5[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>" data-toggle="tab"> <%=@c5[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <div class="tab-pane active" id="home<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                  
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                   
+
+                       <% @c5_sep[g.to_i]["comment"][@date].each do |key,value| %>
+
+                                    
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a target="_blank" href="https://www.facebook.com/profile.php?id=<%=value["fb_id"]%>">
+                                            <%=value["name"]%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"> <%=value["count"]%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                                <span class="">%</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                           
+                                 <%end%>
+                               
+                                </tbody>
+                            </table>
+                                </div>
+                                <%else%>
+                                  <div class="tab-pane " id="home<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                   
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                      
+
+                          <% @c5_sep[g.to_i]["comment"][@date].each do |key,value| %>
+
+                                   
+                               <tr>
+                                    <td style="width: 30%">
+                                        <a target="_blank" href="https://www.facebook.com/profile.php?id=<%=value["fb_id"]%>">
+                                            <%=value["name"]%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"> <%=value["count"]%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                                <span class="">%</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                           
+                                 <%end%>
+                             
+                                </tbody>
+                            </table>
+                                </div>
+                                <%end%>
+                                <%end%>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：粉絲團 最後更新時間：<%= @lasttime[0]["time"] %></h3>
+                </div>
+ 	<%else%>
+                <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <li class="active">
+                                    <a href="#home<%=g%>" data-toggle="tab"><%=@c5[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home<%=g%>" data-toggle="tab"> <%=@c5[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                            	<%@company.each do |g|%>
+                            	<%if g == @company[0]%>
+                                <div class="tab-pane active" id="home<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                  
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                      
+						 <% @alls = 0 %>
+						<% @c5[g.to_i]["comment"].each do |key,value| %>
+							<% @alls += value.to_i %>
+							
+						<% end %>
+
+                       <% @c5[g.to_i]["comment"].each do |key,value| %>
+
+                                    
+                                     <%@pers = value.to_i * 100 / @alls.to_i%>
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a target="_blank" href="https://www.facebook.com/profile.php?id=<%=@c5[g.to_i]["fb_id"][key]%>">
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:<%=@pers%>%">
+                                                <span class=""><%=@pers%>%</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                           
+                                 <%end%>
+                                 <%if params[:tid]=="1"%>
+                                  <tr>
+                                    <td>
+                                        <a href="#">
+                                           總量
+                                        </a>
+                                    </td>
+                                    
+                                    <td class="hidden-phone"><%=@alls%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <%end%>
+                                </tbody>
+                            </table>
+                                </div>
+                                <%else%>
+                                  <div class="tab-pane " id="home<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                   
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                    
+						 <% @alls = 0 %>
+						<% @c5[g.to_i]["comment"].each do |key,value| %>
+							<% @alls += value.to_i %>
+							
+						<% end %>
+
+                       <% @c5[g.to_i]["comment"].each do |key,value| %>
+
+                                     <%@pers = value.to_i * 100 / @alls.to_i%>
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a href="#" >
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:<%=@pers%>%">
+                                                <span class=""><%=@pers%>%</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                           
+                                 <%end%>
+                                  <%if params[:tid]=="1"%>
+                                  <tr>
+                                    <td>
+                                        <a href="#">
+                                           總量
+                                        </a>
+                                    </td>
+                                    
+                                    
+                                    <td class="hidden-phone"><%=@alls%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <%end%>
+                                </tbody>
+                            </table>
+                                </div>
+                                <%end%>
+                                <%end%>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：粉絲團 最後更新時間：<%= @lasttime[0]["time"] %></h3>
+                </div>
+                <%end%>
+                <%end%>
+                <%if params[:fid] != ""%>
+                <div class="col-sm-12">
+                     <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                            	<%@company2.each do |g|%>
+                            	<%if g == @company2[0]%>
+                                <li class="active">
+                                    <a href="#home2<%=g%>" data-toggle="tab"><%=@f16[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%else%>
+                                <li class="">
+                                    <a href="#home2<%=g%>" data-toggle="tab"> <%=@f16[g.to_i]["page_name"]%></a>
+                                </li>
+                                <%end%>
+                                   <%end%>
+                               
+                             
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                            	<%@company2.each do |g|%>
+                            	<%if g == @company2[0]%>
+                                <div class="tab-pane active" id="home2<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                  
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                      
+						 <% @alls = 0 %>
+						<% @f16[g.to_i]["top5"].each do |key,value| %>
+							
+							
+						<% end %>
+
+                       <% @f16[g.to_i]["top5"].each do |key,value| %>
+
+                                    
+                                   
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a href="#" >
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                           
+                                 <%end%>
+                                
+                                </tbody>
+                            </table>
+                                </div>
+                                <%else%>
+                                  <div class="tab-pane " id="home2<%=g%>">
+                                     <table class="table  table-hover general-table">
+                                <thead>
+                                <tr>
+                                    <th>用戶id</th>
+                                   
+                                    <th class="hidden-phone">留言</th>
+                                    <th>比例與總量</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <% @all = 0 %>
+
+                    
+						 <% @alls = 0 %>
+						<% @f16[g.to_i]["top5"].each do |key,value| %>
+							<% @alls += value.to_i %>
+							
+						<% end %>
+
+                       <% @f16[g.to_i]["top5"].each do |key,value| %>
+
+                                    
+                                <tr>
+                                    <td style="width: 30%">
+                                        <a href="#">
+                                            <%=key%>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-phone"><%=value%></td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:%">
+                                                <span class=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                           
+                                 <%end%>
+                                  
+                                </tbody>
+                            </table>
+                                </div>
+                                <%end%>
+                                <%end%>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </section>
+                     <h3>資料來源：討論區 最後更新時間：2014/12/28</h3>
+                </div>
+                <%end%>
+<br>
+            <button onclick="startlearn()" class="btn btn-danger btn-large" style="margin-left: 47%;margin-top: 2%">功能導覽</button>
+
+</div>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="/js/iCheck/jquery.icheck.js"></script>
+<script src="/js/icheck-init.js"></script>
+
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+<!-- <script>
+Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'Julie Yang', y: 3, z: 2, a: 3},
+        {x: '鱷魚必安住好你來A', y: 2, z: 0, a: 1},
+        {x: '絕對領域', y: 0, z: 2, a: 4},
+        {x: '何欣甯', y: 0, z: 2, a: 4},
+        {x: 'cat Yuen', y: 2, z: 4, a: 3}
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z', 'a'],
+    labels: ['公司1', '公司2', '公司3'],
+    barColors:['#414e62','#788ba0','#6dc5a3', '#dc0300']
+
+
+});
+
+</script> -->
+<!--Calendar-->
+<script src="/js/calendar/clndr.js"></script>
+<script src="/js/calendar/evnt.calendar.init.js"></script>
+<script src="/js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+<!--Dashboard Charts-->
+<script src="/js/forindex.js"></script>

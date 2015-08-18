@@ -1,0 +1,156 @@
+
+
+    <!-- left side start-->
+    
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <%= render :partial => 'common/header'%>
+        <!-- header section end-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                <%= @w8[params[:id].to_i]["page_name"] %>
+            </h3>
+           <div class="state-info">
+                
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>po文數</span>
+                            <h3 class="green-txt"><%= @w8[params[:id].to_i]["post"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>like</span>
+                            <h3 class="green-txt"><%= @w8[params[:id].to_i]["like"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>留言數</span>
+                            <h3 class="green-txt"><%= @w8[params[:id].to_i]["comment"]["total"] %></h3>
+                        </div>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+      <div class="row">
+ 	
+ 	<div class="col-sm-12">
+ 		
+                     <section class="panel">
+                <table class="table table-bordered">
+                            <thead>
+                            	
+                            <tr>
+                                <th>品牌口碑</th>
+                                <%@companyw.each do |c|%>
+                                <th colspan="2"><%=@w4[c.to_i]["page_name"]%></th>
+                                <%end%>
+                            </tr>
+                            
+                            </thead>
+                            <tbody>
+                            	
+                            	<% (0..4).each do |n| %>
+                            <tr>
+                                <td ><%= n + 1 %></td>
+                                 <%@companyw.each do |c|%>
+                                <td ><%= @w4[c.to_i]["top5"].keys[n] %></td>
+                                <td style="color:#000;font-weight: bold;text-shadow: 2px 2px 2px #fff;background: <%=getwarmcolor5(@w4[c.to_i]["top5"].values[n].to_i)%>">
+                                	<%= @w4[c.to_i]["top5"].values[n] %></td>
+                                <%end%>
+                            </tr>
+                            
+                            <% end %>
+                            
+                            
+                            </tbody>
+                        </table>
+                        
+                        </section>
+                          <h3>資料來源：微博 最後更新時間：2015/01/05</h3>
+                        </div>
+                           
+
+</div>
+      	<div class="row">
+      		<div class="col-md-12">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#no" onclick="changeif(1)" data-toggle="tab">貼文</a>
+                                </li>
+                                <li class="">
+                                    <a href="#no" onclick="changeif(2)" data-toggle="tab">回應</a>
+                                </li>
+                            </ul>
+                             <script>
+                            function changeif(a){
+                            	if(a == 1){
+                            		$("#theif").attr("src","/outer/w10p?wid=<%=params[:id]%>&cate=post&tid=0");
+                            	}else{
+                            		$("#theif").attr("src","/outer/w10p?wid=<%=params[:id]%>&cate=comment&tid=0");
+                            	}
+                            }
+                            </script>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane  active" id="fp2">
+                                    <div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe id="theif" width="100%" height="700px" src="/outer/w10p?wid=<%=params[:id]%>&cate=post&tid=0" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="fc2">
+                                	<div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe width="100%" height="700px" src="/outer/f10p?wid=<%=params[:id]%>&cate=comment&tid=0" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <h3>資料來源：討論區 最後更新時間：2015/01/06</h3>
+                    <!--more statistics box end-->
+                </div>
+      		
+      		</div>
+      		
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->

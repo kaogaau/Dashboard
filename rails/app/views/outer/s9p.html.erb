@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Morris</title>
+
+  <!--Morris Chart CSS -->
+  <link rel="stylesheet" href="js/morris-chart/morris.css">
+
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body style="background: #fff">
+
+<section>
+    <!-- left side start-->
+ 
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div >
+
+        <!-- header section start-->
+     
+        <!-- header section end-->
+
+        <!-- page heading start-->
+       
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                      
+                        <div class="panel-body">
+                            <div id="graph-bar"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+           
+          
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+    
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+ <%if params[:cid].length == 1%>
+<script >
+	Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'day_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["day_grow"] %>},
+        {x: 'month_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["month_grow"] %>},
+        {x: 'year', y: <%=@a3[@company[0].to_i][params[:cate]]["year_grow"] %>}
+    ],
+    xkey: 'x',
+    ykeys: ['y'],
+    labels: ['<%=@a3[@company[0].to_i]["page_name"]%>'],
+    barColors:['#414e62']
+
+
+});
+
+</script>
+<%end%>
+ <%if params[:cid].length == 2%>
+<script >
+	Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'day_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["day_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["day_grow"] %>},
+        {x: 'month_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["month_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["month_grow"] %>},
+        {x: 'year', y: <%=@a3[@company[0].to_i][params[:cate]]["year_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["year_grow"] %>}
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z'],
+    labels: ['<%=@a3[@company[0].to_i]["page_name"]%>', '<%=@a3[@company[1].to_i]["page_name"]%>'],
+    barColors:['#414e62','#788ba0']
+
+
+});
+
+</script>
+<%end%>
+  <%if params[:cid].length == 3%>
+<script >
+	Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'day_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["day_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["day_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["day_grow"] %>},
+        {x: 'month_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["month_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["month_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["month_grow"] %>},
+        {x: 'year', y: <%=@a3[@company[0].to_i][params[:cate]]["year_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["year_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["year_grow"] %>}
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z', 'a'],
+    labels: ['<%=@a3[@company[0].to_i]["page_name"]%>', '<%=@a3[@company[1].to_i]["page_name"]%>', '<%=@a3[@company[2].to_i]["page_name"]%>'],
+    barColors:['#414e62','#788ba0','#6dc5a3']
+
+
+});
+
+</script>
+<%end%>
+<%if params[:cid].length == 4%>
+<script >
+	Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'day_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["day_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["day_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["day_grow"] %>, b: <%=@a3[@company[3].to_i][params[:cate]]["day_grow"] %>},
+        {x: 'month_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["month_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["month_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["month_grow"] %>, b: <%=@a3[@company[3].to_i][params[:cate]]["month_grow"] %>},
+        {x: 'year', y: <%=@a3[@company[0].to_i][params[:cate]]["year_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["year_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["year_grow"] %>, b: <%=@a3[@company[3].to_i][params[:cate]]["year_grow"] %>}
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z', 'a','b'],
+    labels: ['<%=@a3[@company[0].to_i]["page_name"]%>', '<%=@a3[@company[1].to_i]["page_name"]%>', '<%=@a3[@company[2].to_i]["page_name"]%>','<%=@a3[@company[3].to_i]["page_name"]%>'],
+    barColors:['#414e62','#788ba0','#6dc5a3','#fa0300']
+
+
+});
+
+</script>
+<%end%>
+<%if params[:cid].length == 5%>
+<script >
+	Morris.Bar({
+    element: 'graph-bar',
+    data: [
+        {x: 'day_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["day_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["day_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["day_grow"] %>, b: <%=@a3[@company[3].to_i][params[:cate]]["day_grow"] %>, c: <%=@a3[@company[4].to_i][params[:cate]]["day_grow"] %>},
+        {x: 'month_grow', y: <%=@a3[@company[0].to_i][params[:cate]]["month_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["month_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["month_grow"] %>, b: <%=@a3[@company[3].to_i][params[:cate]]["month_grow"] %>, c: <%=@a3[@company[4].to_i][params[:cate]]["month_grow"] %>},
+        {x: 'year', y: <%=@a3[@company[0].to_i][params[:cate]]["year_grow"] %>, z: <%=@a3[@company[1].to_i][params[:cate]]["year_grow"] %>, a: <%=@a3[@company[2].to_i][params[:cate]]["year_grow"] %>, b: <%=@a3[@company[3].to_i][params[:cate]]["year_grow"] %>, c: <%=@a3[@company[4].to_i][params[:cate]]["year_grow"] %>}
+    ],
+    xkey: 'x',
+    ykeys: ['y', 'z', 'a','b','c'],
+    labels: ['<%=@a3[@company[0].to_i]["page_name"]%>', '<%=@a3[@company[1].to_i]["page_name"]%>', '<%=@a3[@company[2].to_i]["page_name"]%>','<%=@a3[@company[3].to_i]["page_name"]%>','<%=@a3[@company[4].to_i]["page_name"]%>'],
+    barColors:['#414e62','#788ba0','#6dc5a3','#fa0300','#D9DC00']
+
+
+});
+
+</script>
+<%end%>
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

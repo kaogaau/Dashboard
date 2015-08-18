@@ -1,0 +1,145 @@
+<div class="col-md-12">
+                    <!--more statistics box start-->
+        
+                   
+                    <!--more statistics box end-->
+                </div>
+                
+                <%@company.each do |c|%>
+                <%if c.to_i < 5%>
+<div class="col-md-4">
+                    <div class="panel">
+                        <header class="panel-heading">
+                            <%=@c1[c.to_i]["page_name"]%>
+                            <span class="tools pull-right">
+                                
+                             </span>
+                        </header>
+                        <div class="panel-body">
+                            <ul class="goal-progress">
+                                <li>
+                                  
+                                    <div class="details">
+                                        <div class="title">
+                                            男 ：<%=@c1[c.to_i]["user_sex"]["boy"]%>
+                                        </div>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <%=@c1[c.to_i]["user_sex"]["boy_percent"]%>%">
+                                                <span class=""><%=@c1[c.to_i]["user_sex"]["boy_percent"]%>%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    
+                                    <div class="details">
+                                        <div class="title">
+                                          女 ：<%=@c1[c.to_i]["user_sex"]["girl"]%>
+                                        </div>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <%=@c1[c.to_i]["user_sex"]["girl_percent"]%>%">
+                                                <span class=""><%=@c1[c.to_i]["user_sex"]["girl_percent"]%>%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                               
+                            </ul>
+                         
+                        </div>
+                    </div>
+                </div>
+                <%end%>
+               <%end%>
+               <%if params[:tid]=="1"%>
+               <div class="col-md-4">
+                    <div class="panel">
+                        <header class="panel-heading">
+                            總量
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                             </span>
+                        </header>
+                        <div class="panel-body">
+                            <ul class="goal-progress">
+                                <li>
+                                  
+                                    <div class="details">
+                                        <div class="title">
+                                            男 ：<%=@boytotal%>
+                                        </div>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:<%=@boytotal.to_f/@total.to_f*100%>%">
+                                                <span class=""><%=@boytotal.to_f/@total.to_f*100%>%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    
+                                    <div class="details">
+                                        <div class="title">
+                                          女 ：<%=@girltotal%>
+                                        </div>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <%=@girltotal.to_f/@total.to_f*100%>%">
+                                                <span class=""><%=@girltotal.to_f/@total.to_f*100%>%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                               
+                            </ul>
+                         
+                        </div>
+                    </div>
+                </div>
+               <%end%>
+             
+ <div class="col-lg-12">
+ <h3>資料來源：粉絲團 最後更新時間：<%= @lasttime[0]["time"] %></h3>
+    <br>
+            <button onclick="startlearn()" class="btn btn-danger btn-large" style="margin-left: 47%;margin-top: 2%">功能導覽</button>
+</div>
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="/js/iCheck/jquery.icheck.js"></script>
+<script src="/js/icheck-init.js"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="/js/flot-chart/jquery.flot.js"></script>
+<script src="/js/flot-chart/jquery.flot.tooltip.js"></script>
+<script src="/js/flot-chart/jquery.flot.resize.js"></script>
+
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+<!--Calendar-->
+<script src="/js/calendar/clndr.js"></script>
+<script src="/js/calendar/evnt.calendar.init.js"></script>
+<script src="/js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+<!--Dashboard Charts-->
+<script src="/js/forindex.js"></script>

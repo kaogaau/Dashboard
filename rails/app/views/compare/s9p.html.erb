@@ -1,0 +1,124 @@
+<div class="col-md-12">
+                    <!--more statistics box start-->
+                    <section class="panel">
+                        <header class="panel-heading custom-tab dark-tab">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="" onclick="changeif(1)" data-toggle="tab">互動</a>
+                                </li>
+                                <li class="">
+                                    <a href="" onclick="changeif(2)" data-toggle="tab">按讚</a>
+                                </li>
+                                <li class="">
+                                    <a href="" onclick="changeif(3)" data-toggle="tab">留言</a>
+                                </li>
+                                <li class="">
+                                    <a href="" onclick="changeif(4)" data-toggle="tab">分享</a>
+                                </li>
+                            </ul>
+                            <script>
+                            function changeif(a){
+                            	if(a ==1){
+                            	$("#theif").attr("src","/outer/s9p?cid=<%=params[:cid]%>&cate=engagement");
+                            	}
+                            	if(a==2){
+                            		$("#theif").attr("src","/outer/s9p?cid=<%=params[:cid]%>&cate=like");
+                            	}
+                            	if(a==3){
+                            		$("#theif").attr("src","/outer/s9p?cid=<%=params[:cid]%>&cate=comment");
+                            	}
+                            	if(a==4){
+                            		$("#theif").attr("src","/outer/s9p?cid=<%=params[:cid]%>&cate=share");
+                            	}
+                            }
+                            </script>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home2">
+                                      <div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe id='theif' width="100%" height="570px" src="/outer/s9p?cid=<%=params[:cid]%>&cate=engagement" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="about2">
+                                  <div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe width="100%" height="300px" src="/outer/s9p?cid=<%=params[:cid]%>&cate=like" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="profile2">
+                                    <div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe width="100%" height="300px" src="/outer/s9p?cid=<%=params[:cid]%>&cate=comment" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                                <div class="tab-pane" id="contact2">
+                                	<div class="panel-body">
+                            <div class="row">
+                                
+                                      <iframe width="100%" height="300px" src="/outer/s9p?cid=<%=params[:cid]%>&cate=share" style="border: none"></iframe>
+
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   
+                    <!--more statistics box end-->
+                </div>
+
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="/js/iCheck/jquery.icheck.js"></script>
+<script src="/js/icheck-init.js"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="/js/flot-chart/jquery.flot.js"></script>
+<script src="/js/flot-chart/jquery.flot.tooltip.js"></script>
+<script src="/js/flot-chart/jquery.flot.resize.js"></script>
+
+
+<!--Morris Chart-->
+<script src="/js/morris-chart/morris.js"></script>
+<script src="/js/morris-chart/raphael-min.js"></script>
+
+<!--Calendar-->
+<script src="/js/calendar/clndr.js"></script>
+<script src="/js/calendar/evnt.calendar.init.js"></script>
+<script src="/js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+
+<!--Dashboard Charts-->
+<script src="/js/forindex.js"></script>

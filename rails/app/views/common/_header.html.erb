@@ -1,0 +1,500 @@
+<!-- header start -->
+<div id="theheaderforteach" class="header-section">
+
+	<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+	
+	<%if action_name != "choose_company"%>
+	<a href="#myModal2" id="choosecombutton" data-toggle="modal" class="btn btn-success" style="margin-top: 6px;margin-left: 10px">
+                                        選擇分析來源
+                                    </a>
+                                    <%end%>
+                                    <a href="#myModal3" id="choosecombutton" data-toggle="modal" class="btn btn-success" style="margin-top: 6px;margin-left: 10px">
+                                        單一廠商分析總攬
+                                    </a>
+                                   
+	<div class="menu-right">
+		<ul class="notification-menu">
+			
+			
+			<!-- <li>
+				<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown"> <i class="fa fa-bell-o"></i> <span class="badge">4</span> </a>
+				<div class="dropdown-menu dropdown-menu-head pull-right">
+					<h5 class="title">提醒</h5>
+					<ul class="dropdown-list normal-list">
+						<li class="new">
+							<a href=""> <span class="label label-danger"><i class="fa fa-bolt"></i></span> <span class="name">奇哥今日按讚數超越你了！！</span> <em class="small">34 mins</em> </a>
+						</li>
+						<li class="new">
+							<a href=""> <span class="label label-danger"><i class="fa fa-bolt"></i></span> <span class="name">台灣貝親今日的分享數已經超越你了！！</span> <em class="small">1 hrs</em> </a>
+						</li>
+						<li class="new">
+							<a href=""> <span class="label label-danger"><i class="fa fa-bolt"></i></span> <span class="name">愛的世界總分享亮已經超越你了!!</span> <em class="small">4 hrs</em> </a>
+						</li>
+						<li class="new">
+							<a href=""> <span class="label label-danger"><i class="fa fa-bolt"></i></span> <span class="name">mothercare Taiwan總按讚數已經超越你了！！</span> <em class="small">2 days</em> </a>
+						</li>
+						<li class="new">
+							<a href="">看所有警示</a>
+						</li>
+					</ul>
+				</div>
+			</li> -->
+			<li>
+				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%=@user["name"]%><span class="caret"></span> </a>
+				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+					
+					<li>
+						<a href="/login/logout"><i class="fa fa-sign-out"></i> Log Out</a>
+					</li>
+				</ul>
+			</li>
+
+		</ul>
+	</div>
+
+</div>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal2" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                                    <h4 class="modal-title">選擇分析來源</h4>
+                                                </div>
+                                                <div class="modal-body">
+ <form action="/dashboard/for_select_up" method="post">
+          	<input type="hidden" name="page" value="<%=params[:did]%>">
+           <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <header class="panel-heading">
+                            臉書粉絲團分析(最多五種)
+                            <a  style="margin-left: 30px;color: red">紅色代表暫無資料</a> 
+                        </header>
+                         
+                         <script>
+							var checkerman = 0;
+							function theclickall() {
+								if (checkerman == 0) {
+									$("#inlineCheckbox1").attr("checked", "checked");
+									$("#inlineCheckbox2").attr("checked", "checked");
+									$("#inlineCheckbox3").attr("checked", "checked");
+									$("#inlineCheckbox4").attr("checked", "checked");
+									$("#inlineCheckbox5").attr("checked", "checked");
+									checkerman = 1;
+								} else {
+									
+									$("#inlineCheckbox1").attr("checked", false);
+									$("#inlineCheckbox2").attr("checked", false);
+									$("#inlineCheckbox3").attr("checked", false);
+									$("#inlineCheckbox4").attr("checked", false);
+									$("#inlineCheckbox5").attr("checked", false);
+									checkerman = 0;
+								}
+
+							}
+							
+                         </script>
+                         <%
+                         @array1 = session[:cid].split("")
+                         if session[:oid].present? && session[:oid] != []
+       session[:oid].each do |o|
+         @array1 << o
+       end
+     end
+                         @array2 = session[:fid].split("")
+                         @array3 = session[:wid].split("")
+                         %>
+                        <div class="col-lg-12 " >
+                            <label class="checkbox-inline" style="width: 30%;margin-left: 10px;height: 35px">
+                            	<input type="checkbox" id="inlineCheckbox1" class="single-checkbox" name="company1" <%if @array1.include?('0')%>checked='checked' <%end%> value="1"><%= @a1[0]["page_name"]%></label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	  <input type="checkbox" id="inlineCheckbox2" class="single-checkbox" name="company2" <%if @array1.include?('1')%>checked='checked' <%end%> value="1"> <%= @a1[1]["page_name"]%></label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                                <input type="checkbox" id="inlineCheckbox3" class="single-checkbox" name="company3" <%if @array1.include?('2')%>checked='checked' <%end%> value="1"> <%= @a1[2]["page_name"]%></label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<input type="checkbox" id="inlineCheckbox4" class="single-checkbox" name="company4" <%if @array1.include?('3')%>checked='checked' <%end%> value="1"> <%= @a1[3]["page_name"]%></label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox" id="inlineCheckbox5" class="single-checkbox" name="company5" <%if @array1.include?('4')%>checked='checked' <%end%> value="1"> <%= @a1[4]["page_name"]%> </label>
+                            	  <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company6" <%if @array1.include?('5')%>checked='checked' <%end%> value="1"><%= @a1[5]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company7" <%if @array1.include?('6')%>checked='checked' <%end%> value="1"><%= @a1[6]["page_name"]%>
+                            	
+                            </label> 
+                            
+                           <%if  session[:page] != 7%>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company8" <%if @array1.include?('7')%>checked='checked' <%end%> value="1"><%= @a1[7]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company9" <%if @array1.include?('8')%>checked='checked' <%end%> value="1"><%= @a1[8]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"   id="inlineCheckbox5" class="single-checkbox" name="company10" <%if @array1.include?('9')%>checked='checked' <%end%> value="1"><%= @a1[9]["page_name"]%>
+                            	
+                            </label>
+                           
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"   id="inlineCheckbox5" class="single-checkbox" name="company11" <%if @array1.include?('10')%>checked='checked' <%end%> value="1"><%= @a1[10]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company12" <%if @array1.include?('11')%>checked='checked' <%end%> value="1"><%= @a1[11]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox" id="inlineCheckbox5" class="single-checkbox" name="company13" <%if @array1.include?('12')%>checked='checked' <%end%> value="1"><%= @a1[12]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company14" <%if @array1.include?('13')%>checked='checked' <%end%> value="1"><%= @a1[13]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company15" <%if @array1.include?('14')%>checked='checked' <%end%> value="1"><%= @a1[14]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox" id="inlineCheckbox5" class="single-checkbox" name="company16" <%if @array1.include?('15')%>checked='checked' <%end%> value="1"><%= @a1[15]["page_name"]%>
+                            	
+                            </label>
+                           <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	
+                            	<input type="checkbox" id="inlineCheckbox5" class="single-checkbox" name="company17" <%if @array1.include?('16')%>checked='checked' <%end%> value="1"><%= @a1[16]["page_name"]%>
+                            	
+                            </label>
+                            
+                            <%else%>
+                            
+                          <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company8" <%if @array1.include?('7')%>checked='checked' <%end%> value="1"><%= @a1[7]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company9" <%if @array1.include?('8')%>checked='checked' <%end%> value="1"><%= @a1[8]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox"   id="inlineCheckbox5" class="single-checkbox" name="company10" <%if @array1.include?('9')%>checked='checked' <%end%> value="1"><%= @a1[9]["page_name"]%>
+                            	
+                            </label>
+                           
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox"   id="inlineCheckbox5" class="single-checkbox" name="company11" <%if @array1.include?('10')%>checked='checked' <%end%> value="1"><%= @a1[10]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company12" <%if @array1.include?('11')%>checked='checked' <%end%> value="1"><%= @a1[11]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox" id="inlineCheckbox5" class="single-checkbox" name="company13" <%if @array1.include?('12')%>checked='checked' <%end%> value="1"><%= @a1[12]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company14" <%if @array1.include?('13')%>checked='checked' <%end%> value="1"><%= @a1[13]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox"  id="inlineCheckbox5" class="single-checkbox" name="company15" <%if @array1.include?('14')%>checked='checked' <%end%> value="1"><%= @a1[14]["page_name"]%>
+                            	
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox" id="inlineCheckbox5" class="single-checkbox" name="company16" <%if @array1.include?('15')%>checked='checked' <%end%> value="1"><%= @a1[15]["page_name"]%>
+                            	
+                            </label>
+                           <label class="checkbox-inline" style="width: 30%;height: 35px;color: red">
+                            	
+                            	<input type="checkbox" id="inlineCheckbox5" class="single-checkbox" name="company17" <%if @array1.include?('16')%>checked='checked' <%end%> value="1"><%= @a1[16]["page_name"]%>
+                            	
+                            </label>
+                            
+                            <%end%>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%if [3,8,10,15,16 ].include?(session[:page])%>
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                        <header class="panel-heading">
+                            討論區分析
+                            
+                        </header>
+                        <div class="col-lg-12">
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;margin-left: 10px">
+                            	
+                                <input type="checkbox" id="inlineCheckbox1" <%if @array2.include?('0')%>checked='checked' <%end%> name="f1" value="1">Babyhome</label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                             <input type="checkbox" id="inlineCheckbox2" <%if @array2.include?('1')%>checked='checked' <%end%> name="f2" value="1"> Mamibuy</label>
+                            
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%end%>
+            <%if [4,8,10].include?(session[:page])%>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                       <header class="panel-heading">
+                          微博分析
+                            
+                        </header> 
+                        <div class="col-lg-12">
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;margin-left: 10px">
+                            	<input type="checkbox" id="inlineCheckbox1" <%if @array3.include?('0')%>checked='checked' <%end%> name="w1" value="1">麗嬰房</label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<input type="checkbox" id="inlineCheckbox2" <%if @array3.include?('1')%>checked='checked' <%end%> name="w2" value="1"> 紅孩兒</label>
+                           <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<input type="checkbox" id="inlineCheckbox2" <%if @array3.include?('2')%>checked='checked' <%end%> name="w3" value="1">派克蘭帝</label>
+                            	<label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<input type="checkbox" id="inlineCheckbox2" <%if @array3.include?('3')%>checked='checked' <%end%> name="w4" value="1">小豬班納</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%end%>
+            <%if [3,10,14,15 ].include?(session[:page])%>
+            <div class="row">
+            	<div class="col-sm-12">
+                		
+                		</div>
+                <div class="col-sm-12">
+                	
+                	
+            <div class="form-group">
+            	
+                              <header class="panel-heading">
+                            時間區間
+                            
+                        </header>
+                        <label class="col-sm-2 control-label" style="margin-top: 10px">開始日期</label>
+                                    <div class="col-sm-10" style="margin-top: 10px">
+                                        <input type="date"  name="start_date" value="<%=session[:start_date]%>">
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">結束日期</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="end_date" value="<%=session[:end_date]%>">
+                                      
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                <%end%>
+                                 <%if [1,16].include?(session[:page])%>
+            <div class="row">
+                <div class="col-sm-12">
+            <div class="form-group">
+            	  <div class="page-heading">
+            <h3 >
+                選擇時間區段(fb)
+            </h3>
+            
+        </div>   
+                                 
+                                    <div class="col-sm-10">
+                                    	   <label class="col-sm-2 control-label">選擇統計區間</label>
+                                        <select name="other_date" >
+                                        	<option value="999">全部統計</option>
+                                        	<%@choose_time.each do |t|%>
+                                        	<option value="<%=t%>" <%if t == session[:other_date]%>selected="selected"<%end%>><%=t%></option>
+                                        	<%end%>
+                                        	</select>
+                                        
+                                    </div>
+                                </div>
+                               
+                                </div>
+                                </div>
+                                <%end%>
+ 
+            <div class="row">
+                
+               <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" style="margin-left: 5%">分析</button>
+             </div>
+            </div>
+            
+            <%=token_tag nil%>
+            </form>
+
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal3" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                                    <h4 class="modal-title">選擇分析來源</h4>
+                                                </div>
+                                                <div class="modal-body">
+ <form action="/dashboard/for_select_up" method="post">
+          	<input type="hidden" name="page" value="<%=params[:did]%>">
+           <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <header class="panel-heading">
+                            臉書粉絲團分析
+                        
+                        </header>
+                      
+                        
+                        <div class="col-lg-12 " >
+                            <label class="checkbox-inline" style="width: 30%;margin-left: 10px;height: 35px">
+                            	<a href="/dashboard/single_company/0"><%= @a1[0]["page_name"]%></a>
+                            	</label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	 <a href="/dashboard/single_company/1"><%= @a1[1]["page_name"]%></a> </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/2"><%= @a1[2]["page_name"]%></a> </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/3"><%= @a1[3]["page_name"]%></a></label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/4"><%= @a1[4]["page_name"]%></a>	</label>
+                            	  <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/5"><%= @a1[5]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            <a href="/dashboard/single_company/6"><%= @a1[6]["page_name"]%></a>
+                            </label> 
+                            
+                          
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/7"><%= @a1[7]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/8"><%= @a1[8]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/9"><%= @a1[9]["page_name"]%></a>
+                            </label>
+                           
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/10"><%= @a1[10]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/11"><%= @a1[11]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/12"><%= @a1[12]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/13"><%= @a1[13]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/14"><%= @a1[14]["page_name"]%></a>
+                            </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/15"><%= @a1[15]["page_name"]%></a>
+                            </label>
+                           <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_company/16"><%= @a1[16]["page_name"]%></a>
+                            </label>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                        <header class="panel-heading">
+                            討論區分析
+                            
+                        </header>
+                        <div class="col-lg-12">
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;margin-left: 10px">
+                            	
+                                <a href="/dashboard/single_for/0">Babyhome</a>
+                                </label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                             <a href="/dashboard/single_for/1"> Mamibuy
+                             	</a></label>
+                            
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                       <header class="panel-heading">
+                          微博分析
+                            
+                        </header> 
+                        <div class="col-lg-12">
+                            <label class="checkbox-inline" style="width: 30%;height: 35px;margin-left: 10px">
+                            	<a href="/dashboard/single_weibo/0">麗嬰房
+                            		</a></label>
+                            <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_weibo/1"> 紅孩兒</a>
+                            	</label>
+                           <label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_weibo/2">派克蘭帝</a>
+                            	</label>
+                            	<label class="checkbox-inline" style="width: 30%;height: 35px">
+                            	<a href="/dashboard/single_weibo/3">小豬班納</a>
+                            	</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+                               
+ 
+            <div class="row">
+                
+               <div class="modal-footer">
+           
+             </div>
+            </div>
+            
+            <%=token_tag nil%>
+            </form>
+
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- header end -->
