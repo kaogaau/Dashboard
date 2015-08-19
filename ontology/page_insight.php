@@ -3,10 +3,13 @@ include_once("./header.php");
 $conn=getConnection('fb_page');
 $page_id = (int)$_GET['id'];
 ###########list##########
-$list_query="select id,name from pages";
+$list_query="select id,name,old_fans,new_fans from pages";
 $list = mysql_query($list_query,$conn) or die('MySQL query error '.mysql_error().' '.$list_query);
 while($row = mysql_fetch_array($list)){
     $page_list[$row[0]] = $row[1];
+    if ($row[0] == $page_id){
+        $month_fans = $row[3] - $row[2];
+    }
 }
 ###########datelist##########
 $daterange = array();
